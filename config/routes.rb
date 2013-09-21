@@ -1,6 +1,6 @@
 HospitalLink::Application.routes.draw do
   resources :hospitals
-  root :to => redirect('/movies')
+  root :to => redirect('/hospitals')
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
