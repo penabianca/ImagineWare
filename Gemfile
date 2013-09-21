@@ -4,7 +4,7 @@ gem 'haml'
 # use Ruby debugger
 group :development, :test do
   gem 'ruby-debug19'
-  gem 'sqlite3'
+  gem 'pg'
 end
 group :production do
   gem 'pg'
