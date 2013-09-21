@@ -1,0 +1,15 @@
+%h2 Details about #{@hospital.name}
+%ul#details
+  %li
+    City:
+    = @hospital.city
+  %li
+    Created on:
+    = @hospital.creation_date.strftime("%B %d,%Y")
+
+%h3 Description:
+%p#description= @hospital.description
+
+= link_to 'Edit info', edit_hospital_path(@hospital)
+= button_to 'Delete', hospital_path(@hospital), :method => :delete, :confirm => 'Are you sure?'
+= link_to 'Back to hopital list',hospitals_path 

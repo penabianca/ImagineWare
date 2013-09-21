@@ -1,0 +1,14 @@
+%h2 Create New Hostpital
+
+= form_tag hospital_path(@hospital), :method => :put do
+
+  = label :hospital, :name, 'Name'
+  = text_field :hospital, :name
+
+  = label :hospital, :city, 'City'
+  = select :hospital , :city, ['Douala','Mbanga','Yaounde']
+
+  = label :hospital, :creation_date, 'Created On'
+  = date_select :hospital, :creation_date
+
+  = submit_tag 'Save Changes'

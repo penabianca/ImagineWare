@@ -1,0 +1,64 @@
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: yellow;
+  color: DarkSlateGrey;
+  font-family: Tahoma, Verdana, sans-serif;
+  font-size: 10pt;
+}
+div#main {
+  margin: 0;
+  padding: 0 20px 20px;
+}
+a {
+  background: transparent;
+  color: blue;
+  text-decoration: underline;
+  font-weight: bold;
+}
+h1{
+  color: red;
+  font-size: 150%;
+  font-style: italic;
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid DarkSlateGrey;
+}
+h1.title {
+  margin: 0 0 1em;
+  padding: 10px;
+  background-color: orange;
+  color: green;
+  border-bottom: 4px solid gold;
+  font-size: 2em;
+  font-style: normal;
+}
+table#hospitals {i
+  margin: 10px;
+  border-collapse: collapse;
+  width: 100%;
+  border-bottom: 2px solid black;
+}
+table#hospitals th {
+  border: 2px solid red;
+  font-weight: bold;
+  background-color: wheat;
+}
+table#hospitals th, table#hospitals td {
+  padding: 4px;
+  text-align: left;
+}
+#notice, #warning {
+  background: rosybrown;
+  margin: 1em 0;
+  padding: 4px;
+  color: green
+  text-align: center
+}
+form label {
+  display: block;
+  line-height: 25px;
+  font-weight: bold;
+  color: green;
+}
