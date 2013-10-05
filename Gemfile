@@ -2,9 +2,12 @@ source 'https://rubygems.org'
 #USE Haml for templates
 gem 'haml'
 # use Ruby debugger
-group :development, :test do
+group :development , :test do
   gem 'ruby-debug19'
   gem 'sqlite3'
+  gem 'rspec-rails'
+  gem 'ZenTest'
+  gem 'capybara'
 end
 group :production do
   gem 'pg'
