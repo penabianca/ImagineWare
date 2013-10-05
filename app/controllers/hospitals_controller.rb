@@ -1,5 +1,13 @@
 class HospitalsController < ApplicationController
+=begin  layout :layout
+  private
+  def layout
+    is_a? (Devise::SessionsController) ? false : "application"
+    devise_controller? && "application"
+  end
+=end  
   def index
+    #render :layout => false
     @hospitals = Hospital.all
   end
   def show

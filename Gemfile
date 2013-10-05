@@ -8,9 +8,12 @@ group :development , :test do
   gem 'rspec-rails'
   gem 'ZenTest'
   gem 'capybara'
+  gem 'erb2haml'
+  gem 'devise'
 end
 group :production do
   gem 'pg'
+  gem 'rails_12factor'
 end
 gem 'rails', '3.2.8'
 
@@ -25,7 +28,7 @@ gem 'rails', '3.2.8'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
+  gem 'bootstrap-sass','~> 2.3.2'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
