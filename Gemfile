@@ -10,6 +10,8 @@ group :development , :test do
   gem 'capybara'
   gem 'erb2haml'
   #gem 'devise'
+  gem 'cucumber-rails'
+  gem 'cucumber-rails-training-wheels'
 end
 group :production do
   gem 'pg'
