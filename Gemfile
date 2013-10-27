@@ -3,13 +3,13 @@ source 'https://rubygems.org'
 gem 'haml'
 # use Ruby debugger
 group :development , :test do
-  gem 'ruby-debug19'
+  #gem 'ruby-debug19'
   gem 'sqlite3'
   gem 'rspec-rails'
-  gem 'ZenTest'
+  #gem 'ZenTest'
   gem 'capybara'
   gem 'erb2haml'
-  gem 'devise'
+  #gem 'devise'
 end
 group :production do
   gem 'pg'
