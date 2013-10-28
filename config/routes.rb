@@ -3,7 +3,6 @@ HospitalLink::Application.routes.draw do
   
 
 
-  devise_for :users
 
   get "users/new"
   match '/signup', to: 'users#new' , via: 'get'
