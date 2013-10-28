@@ -1,5 +1,9 @@
 %h2 All Courses
 
+%div#tag_cloud
+  - tag_cloud Course.tag_counts, %{s m l} do |tag, css_class|
+    = link_to tag.name, tag_path(tag.name), class: css_class
+
 %table#courses
   %thead
     %tr
@@ -11,7 +15,7 @@
     - @courses.each do |course|
       %tr
         %td= course.title
-        %td= course.tags
+        %td= course.tag_list
         %td= course.created_at
         %td= link_to "More about #{course.title}",course_path(course)
 -# add to end of index.html.haml

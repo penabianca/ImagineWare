@@ -1,6 +1,10 @@
 class CoursesController < ApplicationController
   def index
-    @courses = Course.all
+    if params[:tag]
+      @courses = Course.tagged_with(params[:tag])
+    else
+      @courses = Course.all
+    end
   end
 
   def show
