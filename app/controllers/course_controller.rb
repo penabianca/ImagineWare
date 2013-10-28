@@ -5,6 +5,9 @@ class CourseController < ApplicationController
     # will render app/views/Courses/show.<extension> by default
   end
 
+  def index
+  end
+
   def new
     # default: render 'new' template
   end

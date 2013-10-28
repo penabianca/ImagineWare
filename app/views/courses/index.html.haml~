@@ -17,7 +17,7 @@
   %tbody
     - @courses.each do |course|
       %tr
-        %td= course.title 
+        %td= link_to "#{course.title}", course_path(course) 
         %td= course.content
 
 = link_to 'Add new course', new_course_path
