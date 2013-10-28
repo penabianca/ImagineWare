@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe User do
 
-  before { @user = User.new(first_name: "aime",last_name: "ngongang", email: "aime@ngongang.com",password: "yoo", password_confirmation: "man")}
+  before { @user = User.new(first_name: "aime",last_name: "ngongang", email: "aimechicago5@gmail.com", password: "yoo", password_confirmation: "man")}
+  #before { @user = User.new(first_name: "aime",last_name: "ngongang",email:"aimechicago5@gmail.com")}
 
   subject { @user }
 
@@ -12,8 +13,29 @@ describe User do
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
+  it { should respond_to(:authenticate) }
   #it { should be_valid }
 
+  describe "with a password that's too short" do
+    before { @user.password = @user.password_confirmation = "a" * 5 }
+    it { should be_invalid }
+  end
+=begin
+  describe "return value of authenticate method" do
+    before { @user.save }
+    let(:found_user) { User.find_by_email( @user.email) }
+
+    describe "with valid password" do
+      it { should eq found_user.authenticate(@user.password) }
+    end
+
+    describe "with invalid password" do
+      let(:user_for_invalid_password) { found_user.authenticate("invalid") }
+      it { should_not eq user_for_invalid_password }
+      specify { expect(user_for_invalid_password).to be_false }
+    end
+  end
+=end
   describe "when firstname is not present" do
     before { @user.first_name = " " }
     it { should_not be_valid }
@@ -34,7 +56,7 @@ describe User do
     before { @user.last_name = "a" * 51 }
     it { should_not be_valid }
   end
-=begin
+
   describe "when email format is invalid" do
     it "should be invalid" do
       addresses = %w[user@foo,com user_at_foo.org example.user@foo.foo@bar_baz.com foo@bar+baz.com aime@pena..com]
@@ -44,10 +66,10 @@ describe User do
       end
     end
   end
+=begin
   describe "when email format is valid" do
     it "should be valid" do
-      addresses = %w[A_US-ER@fb.org]
-      #user@foo.COM A_US-ER@fb.org frst.lst@foo.jp a+b@baz.cn]
+      addresses = %w[aimechicago5@gmail.com]
       addresses.each do |valid_address|
         @user.email = valid_address
         expect(@user).to be_valid
@@ -73,5 +95,6 @@ describe User do
     before { @user.password_confirmation = "donotmatch" }
       it { should_not be_valid }
   end
+
 end
 

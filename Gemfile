@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 #USE Haml for templates
 gem 'haml'
+gem 'validates_email_format_of'
 # use Ruby debugger
 
 group :development , :test do
