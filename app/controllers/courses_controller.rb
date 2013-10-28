@@ -1,4 +1,7 @@
 class CoursesController < ApplicationController
+  def index
+    @courses = Course.all
+  end
 
   def show
     id = params[:id] # retrieve Course ID from URI route

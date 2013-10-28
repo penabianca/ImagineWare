@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 -#  This file is app/views/courses/index.html.haml
 %h1 All Courses
 
@@ -7,10 +8,14 @@
     = tag
     = check_box_tag "tags[#{tag}]", 1, @selected_tags.include?(tag), :id => "tags_#{tag}"
   = submit_tag 'Refresh', :id => 'refresh'
+=======
+%h2 All Courses
+>>>>>>> 30606cbe918004223bbe5cccd4563b9ed47d7cb0
 
 %table#courses
   %thead
     %tr
+<<<<<<< HEAD
       %th Course Title
       %th Content
   %tbody
@@ -20,3 +25,18 @@
         %td= course.content
 
 = link_to 'Add new course', new_course_path
+=======
+      %th title
+      %th tags
+      %th date
+      %th details
+  %tbody
+    - @courses.each do |course|
+      %tr
+        %td= course.title
+        %td= course.tags
+        %td= course.created_at
+        %td= link_to "More about #{course.title}",course_path(course)
+-# add to end of index.html.haml
+= link_to 'Add new Course', new_course_path
+>>>>>>> 30606cbe918004223bbe5cccd4563b9ed47d7cb0

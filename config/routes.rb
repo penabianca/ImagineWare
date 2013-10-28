@@ -1,8 +1,5 @@
 HospitalLink::Application.routes.draw do
-
-  
-
-
+  root  to: 'static_pages#home', via: 'get'
 
   get "users/new"
   match '/signup', to: 'users#new' , via: 'get'
@@ -11,7 +8,6 @@ HospitalLink::Application.routes.draw do
   match '/contact', to: 'static_pages#contact' , via: 'get'
   resources :courses
   resources :hospitals
-  root  to: 'static_pages#home', via: 'get'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
