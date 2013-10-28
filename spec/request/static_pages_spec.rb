@@ -3,9 +3,9 @@ require 'spec_helper'
 describe "Static pages" do
 
   describe "Home page" do
-    it "should have the content 'Hospital Linked'" do
+    it "should have the content 'ImagineWare'" do
       visit '/static_pages/home'
-      expect(page).to have_content ('Hospital Linked')
+      expect(page).to have_content ('ImagineWare')
     end
   end
   describe "Help page" do
