@@ -20,7 +20,7 @@ describe User do
     before { @user.password = @user.password_confirmation = "a" * 5 }
     it { should be_invalid }
   end
-
+=begin
   describe "return value of authenticate method" do
     before { @user.save }
     let(:found_user) { User.find_by_email( @user.email) }
@@ -35,6 +35,7 @@ describe User do
       specify { expect(user_for_invalid_password).to be_false }
     end
   end
+=end
   describe "when firstname is not present" do
     before { @user.first_name = " " }
     it { should_not be_valid }
