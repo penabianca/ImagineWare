@@ -1,19 +1,26 @@
+Feature: Filter through courses and find a course
+
+	As an aspiring developer with limited english
+	I want help finding resources to learn HTML5
+	so that I can build my revolutionary web app.
+
 Background: There are courses on the database and the user is logged in
 
-	Given that the following courses exist:
+	Given the following courses exist:
 	| title                       | tags                | content                                                        |
 	| Introduction to HTML5       | beginner,web        | This is and HTML5 course. You must build a website from sratch |
 	| Advanced Android            | advanced,mobile     | Here you will build a sick android app. Strap up!              |
 	| Object Oriented Programming | intermediate,coding | Here you must build classes with inheretance in Java           |
 
-	Given that the following users exist:
-	| first_name | last_name | email               | password   |
-	| Sebastian  | Delgado   | sd@gmail.com        | cs169rocks |
-	| Ryan       | Wilson    | hotmale@hotmail.com | ilovebacon |
+	Given the following users exist:
+	| first_name | last_name | email               | password   | password_confirmation |
+	| Sebastian  | Delgado   | sd@gmail.com        | cs169rocks | cs169rocks            |
+	| Ryan       | Wilson    | hotmale@hotmail.com | ilovebacon | ilovebacon            |
 	
-	Given that sd@gmail.com is logged in
+	#Given that sd@gmail.com is logged in
 	
-	Given that I am on the "Browse Courses" page
+	Given I am on courses
+	
 
 Scenario: Filter course list and select a course.
 	
