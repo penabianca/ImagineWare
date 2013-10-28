@@ -11,8 +11,8 @@
     - @courses.each do |course|
       %tr
         %td= course.title
-        %td= course.strings
+        %td= course.tags
         %td= course.created_at
-        %td= link_to "More about #{hospital.title}",course_path(course)
+        %td= link_to "More about #{course.title}",course_path(course)
 -# add to end of index.html.haml
 = link_to 'Add new Course', new_course_path
