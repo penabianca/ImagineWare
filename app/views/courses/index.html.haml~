@@ -1,0 +1,23 @@
+-#  This file is app/views/courses/index.html.haml
+%h1 All Courses
+
+= form_tag courses_path, :method => :get, :id => 'tags_form' do
+  = hidden_field_tag "title_sort", true if @title_header
+  Include: 
+  - @all_tags.each do |tag|
+    = tag
+    = check_box_tag "tags[#{tag}]", 1, @selected_tags.include?(tag), :id => "tags_#{tag}"
+  = submit_tag 'Refresh', :id => 'refresh'
+
+%table#courses
+  %thead
+    %tr
+      %th Course Title
+      %th Content
+  %tbody
+    - @courses.each do |course|
+      %tr
+        %td= course.title 
+        %td= course.content
+
+= link_to 'Add new course', new_course_path
