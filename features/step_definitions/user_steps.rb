@@ -7,7 +7,5 @@ Given /the following users exist/ do |users_table|
 end
 
 Given /that (.*) is logged in/ do |user_email|
-    params[:user_email] = "sd@gmail.com"
-    params[:user_psswd] = "cs169rocks"
-    redirect_to users_controller_login
+    session[:current_user] = User.find_by_email(user_email).id
 end
