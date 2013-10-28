@@ -1,6 +1,4 @@
 class Course < ActiveRecord::Base
-  attr_accessible :title, :tags, :content
-  def self.all_tags
-    %w(beginner intermediate advanced web mobile coding)
-  end
+  attr_accessible :title, :content, :tag_list
+  acts_as_taggable
 end
