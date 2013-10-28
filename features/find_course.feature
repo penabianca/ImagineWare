@@ -1,3 +1,9 @@
+Feature: Filter through courses and find a course
+
+	As an aspiring developer with limited english
+	I want help finding resources to learn HTML5
+	so that I can build my revolutionary web app.
+
 Background: There are courses on the database and the user is logged in
 
 	Given the following courses exist:
@@ -7,13 +13,14 @@ Background: There are courses on the database and the user is logged in
 	| Object Oriented Programming | intermediate,coding | Here you must build classes with inheretance in Java           |
 
 	Given the following users exist:
-	| first_name | last_name | email               | password   |
-	| Sebastian  | Delgado   | sd@gmail.com        | cs169rocks |
-	| Ryan       | Wilson    | hotmale@hotmail.com | ilovebacon |
+	| first_name | last_name | email               | password   | password_confirmation |
+	| Sebastian  | Delgado   | sd@gmail.com        | cs169rocks | cs169rocks            |
+	| Ryan       | Wilson    | hotmale@hotmail.com | ilovebacon | ilovebacon            |
 	
-	Given that sd@gmail.com is logged in
+	#Given that sd@gmail.com is logged in
 	
-	Given that I am on the "Browse Courses" page
+	Given I am on the courses page
+	
 
 Scenario: Filter course list and select a course.
 	

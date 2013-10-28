@@ -1,5 +1,4 @@
-class UsersController < ApplicationController
-
+class UserController < ApplicationController
   def show
     id = params[:id] # retrieve user ID from URI route
     @user = User.find(id) # look up user by unique ID
@@ -32,6 +31,12 @@ class UsersController < ApplicationController
     @user.destroy
     flash[:notice] = "User '#{@user.title}' deleted."
     redirect_to users_path
+  end
+
+  def login
+    #Authenticate params[:user_email] and params[:user_psswd] (AIME)
+    session[:current_user] = User.find_by(email: params[:user_email]).id
+    redirect_to courses_path
   end
 
 end

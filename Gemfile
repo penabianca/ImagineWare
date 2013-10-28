@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'haml'
 gem 'validates_email_format_of'
 # use Ruby debugger
+
 group :development , :test do
   #gem 'ruby-debug19'
   gem 'sqlite3'
@@ -11,8 +12,9 @@ group :development , :test do
   gem 'capybara'
   gem 'erb2haml'
   #gem 'devise'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
+  gem 'database_cleaner'
 end
 group :production do
   gem 'pg'
