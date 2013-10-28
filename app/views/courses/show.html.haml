@@ -1,0 +1,11 @@
+-# in app/views/courses/show.html.haml
+
+%h2 #{@course.title}
+
+%h3 Content:
+
+%p#content= @course.content
+
+= link_to 'Edit', edit_course_path(@course)
+= button_to 'Delete', course_path(@course), :method => :delete, :confirm => 'Are you sure?'
+= link_to 'Back to course list', courses_path
