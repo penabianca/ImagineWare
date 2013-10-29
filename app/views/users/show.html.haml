@@ -1,0 +1,6 @@
+- provide(:title, @user.first_name + @user.last_name)
+.row
+  %aside.span4
+    %h1
+      =gravatar_for @user
+      =[@user.first_name, @user.last_name].reject(&:empty?).join(' ')

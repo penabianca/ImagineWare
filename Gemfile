@@ -15,6 +15,7 @@ group :development , :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
   gem 'database_cleaner'
+  gem 'factory_girl_rails','4.2.1'
 end
 group :production do
   gem 'pg'
