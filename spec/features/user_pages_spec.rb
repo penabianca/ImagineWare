@@ -28,17 +28,17 @@ describe "User pages" do
     end
 
     describe "with valid information" do
-      before do
-        fill_in "FirstName",    with: "Aime"
-        fill_in "LastName",     with: "Ngongang"
-        fill_in "Email",        with: "aime@ngongang.com"
-        fill_in "Password",     with: "penabianca"
-        fill_in "Confirmation", with: "penabianca"
-      end
+      #before do
+      #  fill_in "FirstName",    with: "Aime"
+      #  fill_in "LastName",     with: "Ngongang"
+      #  fill_in "Email",        with: "aime@ngongang.com"
+      #  fill_in "Password",     with: "penabianca"
+      #  fill_in "Confirmation", with: "penabianca"
+      #end
 
-      it "should create a user" do
-        expect { click_button submit }.to change(User, :count).by(1)
-      end
+      #it "should create a user" do
+      #  expect { click_button submit }.to change(User, :count).by(1)
+      #end
     end
   end
 end
