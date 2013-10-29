@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
-
   def show
-    id = params[:id] # retrieve user ID from URI route
-    @user = User.find(id) # look up user by unique ID
-    # will render app/views/users/show.<extension> by default
+    @user = User.find(params[:id]) # look up user by unique ID
   end
 
   def new
@@ -11,11 +8,20 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create!(params[:user])
-    flash[:notice] = "#{@user.title} was successfully created."
-    redirect_to users_path
+    @user = User.new(params[:user])
+    if @user.save
+      flash[:success] = "Welcome to ImagineWare Online Course Platform."
+      redirect_to  @user
+    else
+      render 'new'
+    end
+    #redirect_to users_path
   end
-
+  private 
+    def user_params
+      params.require(:user).permit(:first_name,:last_name, :email, :password,:password_confirmation)
+    end
+  #{@user.email}
   def edit
     @user = User.find params[:id]
   end
