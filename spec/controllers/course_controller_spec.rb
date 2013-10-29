@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe CourseController do
+describe CoursesController do
 
 end

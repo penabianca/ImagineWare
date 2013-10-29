@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 #USE Haml for templates
 gem 'haml'
 gem 'validates_email_format_of'
-# use Ruby debugger
-
+# use Ruby debuggeb
+gem 'turbolinks'
 group :development , :test do
   #gem 'ruby-debug19'
   gem 'sqlite3'
