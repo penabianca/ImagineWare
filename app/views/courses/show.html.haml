@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 -# in app/views/courses/show.html.haml
 
 %h2 #{@course.title}
@@ -9,3 +10,20 @@
 = link_to 'Edit', edit_course_path(@course)
 = button_to 'Delete', course_path(@course), :method => :delete, :confirm => 'Are you sure?'
 = link_to 'Back to course list', courses_path
+=======
+%h3 Details about #{@course.title}
+%ul#details
+  %li
+    Title:
+    = @course.title
+  %li
+    Created on:
+    = @course.created_at.strftime("%B %d,%Y")
+
+%h3 Content:
+%p#description= @course.content
+
+= link_to 'Edit info', edit_course_path(@course)
+= button_to 'Delete', course_path(@course), :method => :delete, :confirm => 'Are you sure?'
+= link_to 'Back to course list',courses_path 
+>>>>>>> fabadd983577467e9b45de0de4eaadd6141233a6

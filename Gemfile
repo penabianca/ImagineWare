@@ -4,6 +4,9 @@ gem 'haml'
 gem 'validates_email_format_of'
 # use Ruby debuggeb
 gem 'turbolinks'
+gem 'acts-as-taggable-on'
+# use Ruby debugger
+
 group :development , :test do
   #gem 'ruby-debug19'
   gem 'sqlite3'

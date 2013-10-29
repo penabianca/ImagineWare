@@ -9,7 +9,8 @@ HospitalLink::Application.routes.draw do
   match '/contact', to: 'static_pages#contact' , via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
   resources :courses
-  resources :hospitals
+  get 'tags/:tag', to: 'courses#index', as: :tag
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

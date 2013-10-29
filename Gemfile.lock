@@ -28,6 +28,12 @@ GEM
     activesupport (3.2.8)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+<<<<<<< HEAD
+=======
+    acts-as-taggable-on (2.4.1)
+      rails (>= 3, < 5)
+    addressable (2.3.2)
+>>>>>>> fabadd983577467e9b45de0de4eaadd6141233a6
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.2.2.0)
@@ -172,6 +178,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on
   bcrypt-ruby (= 3.0.1)
   bootstrap-sass (~> 2.2.2)
   capybara
