@@ -14,6 +14,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to ImagineWare Online Course Platform."
       redirect_to  @user
     else
+      flash[:fail] = "You did not enter all the fields correctly"
       render 'new'
     end
     #redirect_to users_path

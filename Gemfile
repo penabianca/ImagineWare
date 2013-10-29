@@ -6,7 +6,7 @@ gem 'validates_email_format_of'
 gem 'turbolinks'
 gem 'acts-as-taggable-on'
 # use Ruby debugger
-
+gem 'simple_form'
 group :development , :test do
   #gem 'ruby-debug19'
   gem 'sqlite3'
