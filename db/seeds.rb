@@ -22,3 +22,18 @@ Hospital.send(:attr_accessible, :name,:city,:creation_date)
 more_hospitals.each do |hospital|
   Hospital.create!(hospital)
 end
+
+list = ['web', 'android', 'beginner']
+list.each do |tag|
+  ActsAsTaggableOn::Tag.new(:name => tag).save
+end
+@a = Course.create(:title => "Introduction to HTML5", :content => "Javascript without the javascript")
+@a.tag_list.add('web')
+@a.tag_list.add('beginner')
+@a.save
+@b = Course.create(:title => "Android Programming", :content => "One million devices and a lot of bad software")
+@b.tag_list.add('android')
+@b.save
+@c = Course.create(:title => "Ruby on Rails", :content => "DHH smells of axe body spray")
+@c.tag_list.add('beginner')
+@c.save
