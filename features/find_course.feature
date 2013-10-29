@@ -8,9 +8,9 @@ Background: There are courses on the database and the user is logged in
 
 	Given the following courses exist:
 	| title                       | tags                | content                                                        |
-	| Introduction to HTML5       | beginner, web        | This is and HTML5 course. You must build a website from sratch |
-	| Advanced Android            | advanced, mobile     | Here you will build a sick android app. Strap up!              |
-	| Object Oriented Programming | intermediate, coding | Here you must build classes with inheretance in Java           |
+	| Introduction to HTML5       | web        | This is and HTML5 course. You must build a website from sratch |
+	| Advanced Android            | a     | Here you will build a sick android app. Strap up!              |
+	| Object Oriented Programming | b | Here you must build classes with inheretance in Java           |
 
 	Given the following users exist:
 	| first_name | last_name | email               | password   | password_confirmation |
@@ -21,9 +21,15 @@ Background: There are courses on the database and the user is logged in
 	
 	Given I am on the courses page
 	
-
 Scenario: Filter course list and select a course.
-	When I follow "beginner"
-	Then I should see "Introduction to HTML5"
-	When I follow "Introduction to HTML5"
-	Then I should be on the "Introduction to HTML5" page
+
+  Then I should see "Introduction to HTML5"
+  Then I should see "Advanced Android"
+  Then I should see "Oriented Programming"
+  Then I should see "web"
+	When I follow "web"
+  Then I should see "Introduction to HTML5"
+  Then I should not see "Advanced Android"
+  Then I should not see "Object Oriented Programming"
+  When I follow "More about Introduction to HTML5"
+  Then I should see "This is and HTML5 course. You must build a website from sratch"

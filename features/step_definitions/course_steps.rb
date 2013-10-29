@@ -2,10 +2,10 @@ Given /the following courses exist/ do |courses_table|
   courses_table.hashes.each do |course|
       @course         = Course.new
       @course.title   = course['title']
-      @course.tag_list.add(course['tags'])
       @course.content = course['content']
+      @course.tag_list.add(course['tags'])
 
-      @course.save!
+      @course.save
   end
 end
 

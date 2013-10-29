@@ -1,16 +1,15 @@
 class CoursesController < ApplicationController
   def index
+    @pasta = params[:tag]
     if params[:tag]
-      @courses = Course.tagged_with(params[:tag])
+      @courses = Course.tagged_with(params[:tag], :any => true)
     else
       @courses = Course.all
     end
   end
 
   def show
-    id = params[:id] # retrieve Course ID from URI route
-    @course = Course.find(id) # look up Course by unique ID
-    # will render app/views/Courses/show.<extension> by default
+    @course = Course.find(params[:id])
   end
 
   def new
