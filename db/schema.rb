@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20131029070357) do
     t.string   "grade"
     t.string   "feedback"
   end
+
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
