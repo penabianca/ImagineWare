@@ -7,7 +7,7 @@
           %li= link_to "Home", root_path
           %li= link_to "Help", help_path
           - if signed_in?
-            %li= link_to "Courses", courses_path
+            %li= link_to "Courses", '#'
             %li= link_to "Grades", '#'
             %li#fat-menu.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
