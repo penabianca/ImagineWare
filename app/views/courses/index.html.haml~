@@ -1,23 +1,21 @@
 -#  This file is app/views/courses/index.html.haml
-%h1 All Courses
+%h2 All Courses
 
-= form_tag courses_path, :method => :get, :id => 'tags_form' do
-  = hidden_field_tag "title_sort", true if @title_header
-  Include: 
-  - @all_tags.each do |tag|
-    = tag
-    = check_box_tag "tags[#{tag}]", 1, @selected_tags.include?(tag), :id => "tags_#{tag}"
-  = submit_tag 'Refresh', :id => 'refresh'
+%div#tag_cloud
+  - tag_cloud Course.tag_counts, %{s m l} do |tag, css_class|
+    = link_to tag.name, tag_path(tag.name), class: css_class
+= @pasta
+%center
+  %table#courses
 
-%table#courses
-  %thead
-    %tr
-      %th Course Title
-      %th Content
-  %tbody
-    - @courses.each do |course|
+    %thead
       %tr
-        %td= link_to "#{course.title}", course_path(course) 
-        %td= course.content
-
-= link_to 'Add new course', new_course_path
+        %th Course Title
+        -#%th content
+    %tbody
+      - @courses.each do |course|
+        %tr
+          %td= link_to "#{course.title}", course_path(course)
+          -#%td= "#{course.content}"
+-# add to end of index.html.haml
+-#= link_to 'Add new Course', new_course_path
