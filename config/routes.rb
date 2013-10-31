@@ -2,6 +2,7 @@ HospitalLink::Application.routes.draw do
   root  to: 'static_pages#home', via: 'get'
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
+  resources :submissions
   match '/signin',  to: 'sessions#new', via: 'get'
   match '/signup', to: 'users#new' , via: 'get'
   match '/help', to:  'static_pages#help' , via: 'get'

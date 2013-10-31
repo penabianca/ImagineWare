@@ -10,6 +10,9 @@ module SessionsHelper
   end
   def current_user=(user)
     @current_user = user
+    if @current_user != nil
+      session[:current_user] = @current_user.id
+    end
   end
   def current_user
     remember_token = User.encrypt(cookies[:remember_token])
@@ -18,5 +21,6 @@ module SessionsHelper
    def sign_out
      self.current_user = nil
      cookies.delete(:remember_token)
+     session[:current_user] = nil
   end
 end

@@ -6,6 +6,10 @@ class SubmissionsController < ApplicationController
     # will render app/views/Courses/show.<extension> by default
   end
 
+  def index
+    @submissions = Submission.where("student_id = #{session[:current_user]}").to_a
+    
+  end
 
   def create
     @submission = Submission.create!(params[:Submission])

@@ -1,0 +1,16 @@
+-#  This file is app/views/submissions/index.html.haml
+%h2 All Submissions
+%table#submissions
+ %thead
+  %tr
+   %th Course
+   %th Grade
+   %th Date Submitted
+   %th Feedback
+  %tbody
+   - @submissions.each do |submission|
+    %tr
+     %td= Course.find(submission.course_id).title
+     %td= submission.grade
+     %td= submission.created_at
+     %td= link_to "See your feedback for #{Course.find(submission.course_id).title}", submission_path(submission.id)
