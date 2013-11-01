@@ -31,6 +31,7 @@ end
 
 list = ['web', 'android', 'beginner']
 list = ['web', 'android','ruby', 'beginner', 'intermediate', 'advanced']
+
 list.each do |tag|
   ActsAsTaggableOn::Tag.new(:name => tag).save
 end

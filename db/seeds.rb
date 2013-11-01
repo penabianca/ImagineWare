@@ -18,7 +18,6 @@
 #  Course.create!(course)
 #end
 
-<<<<<<< HEAD
 some_submissions = [
 {:student_id =>1, :course_id =>1},
 {:student_id =>1, :course_id =>2},
@@ -31,9 +30,8 @@ end
 
 
 list = ['web', 'android', 'beginner']
-=======
 list = ['web', 'android','ruby', 'beginner', 'intermediate', 'advanced']
->>>>>>> a3adb3d931eb502ae8606634b3a699a83a1dc1b0
+
 list.each do |tag|
   ActsAsTaggableOn::Tag.new(:name => tag).save
 end
