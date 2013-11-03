@@ -1,5 +1,9 @@
 Feature: View grade for submitted course
 
+  As a computer science student
+  I want to get feedback on the Kinect SDK course I took online
+  So that I can see what I need to improve to make my first Kinect game.
+
 Background:
 
 	Given the following courses exist:
