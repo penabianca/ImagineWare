@@ -31,5 +31,5 @@ Scenario: Filter course list and select a course.
   Then I should see "Introduction to HTML5"
   Then I should not see "Advanced Android"
   Then I should not see "Object Oriented Programming"
-  When I follow "More about Introduction to HTML5"
+  When I follow "Introduction to HTML5"
   Then I should see "This is and HTML5 course. You must build a website from sratch"
