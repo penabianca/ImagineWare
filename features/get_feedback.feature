@@ -1,4 +1,10 @@
-Background: 
+Feature: View grade for submitted course
+
+  As a computer science student
+  I want to get feedback on the Kinect SDK course I took online
+  So that I can see what I need to improve to make my first Kinect game.
+
+Background:
 
 	Given the following courses exist:
 	| title                       | tags                | content                                                        |
@@ -25,4 +31,3 @@ Scenario: Upload file and get feedback
 	Given that my "Introduction to HTML5" submission gets graded with a "B"
 	When I press on "profile"
 	Then I should see the following submission: "Introduction to HTML5", "B"
-	 
