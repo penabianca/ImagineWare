@@ -17,15 +17,18 @@ Background:
 	| Sebastian  | Delgado   | sd@gmail.com        | cs169rocks |
 	| Ryan       | Wilson    | hotmale@hotmail.com | ilovebacon |
 	
-	Given that sd@gmail.com is logged in
-	Given that I am on the "Introduction to HTML5" page
+	Given that sd@gmail.com is logged in with password cs169rocks
+	Given I am on the courses page
+        Then I should see "Introduction to HTML5"
+        When I follow "Introduction to HTML5"
+	Then I should be on the "Introduction to HTML5" page
 
 Scenario: Upload file and get feedback
 
 	When I submit my assignment
-	Then I should see "Your file has been submitted for grading" message
+	Then I should see "Your submission for Introduction to HTML5 was successful" message
 	Then I should be on the "Introduction to HTML5" page
-	When I press on "profile"
+	When I follow "profile"
 	Then I should be on the "Profile" page
 	Then I should see the following submission: "Introduction to HTML5", "Pending"
 	Given that my "Introduction to HTML5" submission gets graded with a "B"

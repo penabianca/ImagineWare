@@ -18,6 +18,8 @@ module NavigationHelpers
 
     when /^the courses page$/
       '/courses'
+    when /^the "Introduction to HTML5" page$/
+      '/courses/1'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
