@@ -9,8 +9,8 @@ Background: There are courses on the database and the user is logged in
 	Given the following courses exist:
 	| title                       | tags                | content                                                        |
 	| Introduction to HTML5       | web        | This is and HTML5 course. You must build a website from sratch |
-	| Advanced Android            | a     | Here you will build a sick android app. Strap up!              |
-	| Object Oriented Programming | b | Here you must build classes with inheretance in Java           |
+	| Advanced Android            | advanced     | Here you will build a sick android app. Strap up!              |
+	| Object Oriented Programming | beginner | Here you must build classes with inheretance in Java           |
 
 	Given the following users exist:
 	| first_name | last_name | email               | password   | password_confirmation |
@@ -33,3 +33,11 @@ Scenario: Filter course list and select a course.
   Then I should not see "Object Oriented Programming"
   When I follow "Introduction to HTML5"
   Then I should see "This is and HTML5 course. You must build a website from sratch"
+
+Scenario: Unsuccessfully look for a beginner android course
+
+  Then I should see "beginner"
+    When I follow "beginner"
+  Then I should see "Object Oriented Programming"
+  Then I should not see "Android Programming"
+  # Did not find any beginner courses for android! 
