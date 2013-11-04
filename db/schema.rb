@@ -20,14 +20,6 @@ ActiveRecord::Schema.define(:version => 20131031034929) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "hospitals", :force => true do |t|
-    t.string   "name"
-    t.string   "city"
-    t.text     "description"
-    t.datetime "creation_date"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
 
   create_table "submissions", :force => true do |t|
     t.datetime "created_at", :null => false

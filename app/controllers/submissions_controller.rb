@@ -16,12 +16,12 @@ class SubmissionsController < ApplicationController
     flash[:notice] = "Your submission for #{Course.find(@submission.course_id).title} was successful"
     redirict_to user_path
   end
-
+=begin
   def update
     @submission = Submission.find params[:id]
     @submission.update_attributes!(params[:Submission])
     flash[:notice] = "#{User.find(@submission.user_id).first_name}'s submission for #{Course.find(@submission.course_id).title} has been graded"
     redirect_to course_path(@course)
   end
-
+=end
 end

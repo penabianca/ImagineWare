@@ -19,6 +19,7 @@ group :development , :test do
   gem 'cucumber-rails-training-wheels'
   gem 'database_cleaner'
   gem 'factory_girl_rails','4.2.1'
+  gem 'simplecov'
 end
 group :production do
   gem 'pg'

@@ -39,7 +39,7 @@ class CoursesController < ApplicationController
   #    @courses.concat(Course.find_all_by_tags(tag))
   #  end 
   #end
-
+=begin
   def edit
     @course = Course.find params[:id]
   end
@@ -57,5 +57,5 @@ class CoursesController < ApplicationController
     flash[:notice] = "Course '#{@course.title}' deleted."
     redirect_to courses_path
   end
-
+=end
 end

@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:first_name,:last_name, :email, :password,:password_confirmation)
     end
-  #{@user.email}
+=begin  #{@user.email}
   def edit
     @user = User.find params[:id]
   end
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     flash[:notice] = "#{@user.title} was successfully updated."
     redirect_to user_path(@user)
   end
-
+=end
   def destroy
     @user = User.find(params[:id])
     @user.destroy
