@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(:version => 20131105215338) do
     t.string   "password"
     t.string   "password_confirmation"
     t.string   "remember_token"
-    t.integer  "group"
+    t.string   "role"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
