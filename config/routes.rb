@@ -9,8 +9,14 @@ HospitalLink::Application.routes.draw do
   match '/about', to:   'static_pages#about', via: 'get'
   match '/contact', to: 'static_pages#contact' , via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
-  resources :courses
+
+  resources :courses, only: [:index, :show]
   get 'tags/:tag', to: 'courses#index', as: :tag
+
+  namespace :admin do
+    match       '/dashboard', to: 'dashboard#index', via: 'get'
+    resources   :courses, only: [:index, :new, :create, :edit, :update, :destroy]
+  end
 
 
   # The priority is based upon order of creation:
