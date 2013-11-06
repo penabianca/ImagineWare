@@ -11,8 +11,4 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
   end
-
-  def new
-    # default: render 'new' template
-  end
 end
