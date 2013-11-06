@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   private
 
   def check_privilege
-    self.privilege ||= 1
+    self.privilege ||= 7
   end
   def create_remember_token
     self.remember_token = User.encrypt(User.new_remember_token)
