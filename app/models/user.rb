@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
+  ROLES = %w[admin student banned]
   before_create :create_remember_token
   before_save { self.email = email.downcase }
   before_save :check_privilege
-  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_token
+  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_token, :role
 
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, presence: true, length: {maximum: 50}
@@ -13,12 +14,10 @@ class User < ActiveRecord::Base
   validates :email, presence: true,format: { with: VALID_EMAIL_REGEX },uniqueness:{ case_sensitive: false }
   #validates :email, presence: true, email_format: { message: "doesn't look like an email address" }, uniqueness:{ case_sensitive: false }
 
-  validates :group, presence: true, numericality: true
-
   has_secure_password
 
   def User.admin?
-    self.group == 0
+    self.role == 'admin'
   end
 
   def User.new_remember_token
@@ -32,7 +31,7 @@ class User < ActiveRecord::Base
   private
 
   def check_privilege
-    self.privilege ||= 7
+    self.role ||= 'student'
   end
   def create_remember_token
     self.remember_token = User.encrypt(User.new_remember_token)
