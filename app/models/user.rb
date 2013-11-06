@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   before_create :create_remember_token
   before_save { self.email = email.downcase }
+  before_save :check_privilege
   attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_token
 
   validates :first_name, presence: true, length: { maximum: 50 }
@@ -12,7 +13,13 @@ class User < ActiveRecord::Base
   validates :email, presence: true,format: { with: VALID_EMAIL_REGEX },uniqueness:{ case_sensitive: false }
   #validates :email, presence: true, email_format: { message: "doesn't look like an email address" }, uniqueness:{ case_sensitive: false }
 
+  validates :group, presence: true, numericality: true
+
   has_secure_password
+
+  def User.admin?
+    self.group == 0
+  end
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64
@@ -24,7 +31,10 @@ class User < ActiveRecord::Base
 
   private
 
-    def create_remember_token
-      self.remember_token = User.encrypt(User.new_remember_token)
-    end
+  def check_privilege
+    self.privilege ||= 1
+  end
+  def create_remember_token
+    self.remember_token = User.encrypt(User.new_remember_token)
+  end
 end
