@@ -3,8 +3,13 @@ HospitalLink::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
   resources :submissions
+  match '/students', to: 'users#students', via: 'get'
+  get   '/signup/instructors/accept/:id',to: 'users#accept', as: :accept
+  match '/signup/instructors/deny', to: 'users#deny', via: 'get'
+  match '/create/instructors', to: 'users#create_instructors', via: 'post'  
   match '/signin',  to: 'sessions#new', via: 'get'
-  match '/signup', to: 'users#new' , via: 'get'
+  match '/signup/students', to: 'users#new' , via: 'get'
+  match '/signup/instructors', to: 'users#new_instructors', via: 'get'
   match '/help', to:  'static_pages#help' , via: 'get'
   match '/about', to:   'static_pages#about', via: 'get'
   match '/contact', to: 'static_pages#contact' , via: 'get'

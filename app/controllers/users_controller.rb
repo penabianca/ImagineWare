@@ -2,13 +2,37 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id]) # look up user by unique ID
   end
-
+  def students
+    
+    #@students = User.where('instruc' => false)
+    @students = User.where('instruc' => false).paginate(:page => params[:page],per_page: 5)
+  end
   def new
     # default: render 'new' template
   end
-
+  def accept
+    #puts @user.first_name
+    @user.instruc = "true"
+    if @user.save
+      flash[:notice] = "yaay"
+    end
+  end
+  def deny
+  end
+  def new_instructors
+  end
+  def create_instructors
+    @user = User.new(params[:user])
+    #flash.now[:notice] = "Thank you for signin up as instructors once the adminstrator
+    #approves you, you will get notified"
+    @user.instruc ="true"
+    if @user.save
+      UserMailer.verify_instructor(@user).deliver
+    end
+  end
   def create
     @user = User.new(params[:user])
+    @user.instruc = "false"
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to ImagineWare Online Course Platform."
