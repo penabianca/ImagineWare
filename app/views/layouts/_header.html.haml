@@ -9,8 +9,11 @@
 
           - if signed_in? 
             %li= link_to "Courses", courses_path
-            -if current_user.instruc?
+            -if current_user.instruc? 
               %li= link_to "All Students", students_path
+            -elsif current_user.admin?
+              %li= link_to "All students", students_path
+              %li= link_to "All instructors", instructors_path
             -else
               %li= link_to "Grades", submissions_path(current_user)
             %li#fat-menu.dropdown

@@ -6,9 +6,6 @@
     %h1
       Hello Admin
     %p
-      Mr #{@user.first_name} #{@user.last_name} would like to be an instructor
-      to accept please click on 
-      = link_to "Accept", accept_path(@user)
-      to deny, please click on the following link
-      =link_to "Deny", signup_instructors_deny_path(@user)
+      Mr #{@user.first_name} #{@user.last_name} signed up as an instructor
+      please welcome him if he is allowed to instruct, otherwise the administrator will delete him.
     %p Thanks for joining and have a great day!

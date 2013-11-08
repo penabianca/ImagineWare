@@ -3,30 +3,23 @@ class UsersController < ApplicationController
     @user = User.find(params[:id]) # look up user by unique ID
   end
   def students
-    
-    #@students = User.where('instruc' => false)
     @students = User.where('instruc' => false).paginate(:page => params[:page],per_page: 5)
   end
+  def instructors
+    @instructors = User.where('instruc' => true).paginate(:page => params[:page],per_page: 5)
+  end
+
   def new
     # default: render 'new' template
-  end
-  def accept
-    #puts @user.first_name
-    @user.instruc = "true"
-    if @user.save
-      flash[:notice] = "yaay"
-    end
-  end
-  def deny
   end
   def new_instructors
   end
   def create_instructors
     @user = User.new(params[:user])
-    #flash.now[:notice] = "Thank you for signin up as instructors once the adminstrator
     #approves you, you will get notified"
     @user.instruc ="true"
     if @user.save
+      flash.now[:notice] = "Thank you for signin up as instructors" 
       UserMailer.verify_instructor(@user).deliver
     end
   end
@@ -42,6 +35,12 @@ class UsersController < ApplicationController
       render 'new'
     end
     #redirect_to users_path
+  end
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:notice] = "User '#{@user.first_name}' deleted."
+    redirect_to instructors_path
   end
   private 
     def user_params
@@ -59,11 +58,5 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 =end
-  def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-    flash[:notice] = "User '#{@user.title}' deleted."
-    redirect_to users_path
-  end
 
 end
