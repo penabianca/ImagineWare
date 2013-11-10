@@ -4,6 +4,10 @@ HospitalLink::Application.routes.draw do
   resources :users
   resources :submissions
   match '/students', to: 'users#students', via: 'get'
+  match '/students1',to: 'users#students1',via: 'get'
+  get '/grade/submission', to: 'submissions#grade', as: :grade_submission
+  put '/leave/feedback/:id', to: 'submissions#leave_feedback', as: :leave_feedback
+  get '/students/submissions/:id', to: 'submissions#student', as: :student_submissions
   match '/instructors', to: 'users#instructors', via: 'get'
   match '/create/instructors', to: 'users#create_instructors', via: 'post'  
   match '/signin',  to: 'sessions#new', via: 'get'

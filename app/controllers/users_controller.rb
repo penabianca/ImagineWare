@@ -5,6 +5,10 @@ class UsersController < ApplicationController
   def students
     @students = User.where('instruc' => false).paginate(:page => params[:page],per_page: 5)
   end
+  def students1
+    @students1 = User.where('instruc' => false).paginate(:page => params[:page],per_page: 5)
+  end
+
   def instructors
     @instructors = User.where('instruc' => true).paginate(:page => params[:page],per_page: 5)
   end
@@ -39,7 +43,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    flash[:notice] = "User '#{@user.first_name}' deleted."
+    flash.now[:notice] = "User '#{@user.first_name}' deleted."
     redirect_to instructors_path
   end
   private 

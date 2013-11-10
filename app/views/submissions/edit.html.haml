@@ -1,0 +1,11 @@
+%h2 Edit Submission
+
+=form_tag submission_path(@submission), :method => :put do
+
+  =label :submission, :grade, 'Grade'
+  = text_field :submission, 'grade'
+
+  =label :submission, :feedback, 'Feedback'
+  =text_area :submission, 'feedback'
+
+  =submit_tag 'Submit grade'

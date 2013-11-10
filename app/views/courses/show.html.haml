@@ -9,7 +9,11 @@
 
 %h3 Content:
 %p#description= @course.content
-
+-if !current_user.admin? and !current_user.instruc?  
+  = button_to 'submit assigment', new_submission_path
+  = link_to 'Back to course list',courses_path 
+-else
+  = link_to "Edit #{@course.title}", '#'
+  = link_to 'Back to course list',courses_path 
 -#= link_to 'Edit info', edit_course_path(@course)
 -#= button_to 'Delete', course_path(@course), :method => :delete, :confirm => 'Are you sure?'
-= link_to 'Back to course list',courses_path 
