@@ -5,7 +5,7 @@ class SubmissionsController < ApplicationController
   end
 
   def index
-    @submissions = Submission.where("student_id = #{session[:current_user]}").to_a
+    @submissions = Submission.where("user_id = #{session[:current_user]}").to_a
   end
 
   def create

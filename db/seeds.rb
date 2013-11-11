@@ -19,9 +19,9 @@
 #end
 
 some_submissions = [
-{:student_id =>1, :course_id =>1},
-{:student_id =>1, :course_id =>2},
-{:student_id =>2, :course_id =>3},
+{:user_id =>1, :course_id =>1},
+{:user_id =>1, :course_id =>2},
+{:user_id =>2, :course_id =>3},
 ]
 Submission.send(:attr_accessible, :student_id, :course_id)
 some_submissions.each do |submission|
