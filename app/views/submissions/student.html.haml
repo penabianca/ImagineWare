@@ -13,4 +13,4 @@
      %td= Course.find(submission.course_id).title
      %td= link_to "#{submission.grade}", submission_path(submission)
      %td= submission.created_at
-     %td= link_to "leave feedback for #{Course.find(submission.course_id).title}", submission_path(submission)
+     %td= link_to "leave feedback for #{Course.find(submission.course_id).title}", submission_path(submission.id)

@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 #USE Haml for templates
 gem 'haml'
 gem 'validates_email_format_of'
+gem 'strong_parameters'
 # use Ruby debuggeb
 gem 'turbolinks'
 gem 'acts-as-taggable-on'

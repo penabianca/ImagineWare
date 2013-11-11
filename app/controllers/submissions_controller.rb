@@ -21,7 +21,7 @@ class SubmissionsController < ApplicationController
     @submission = Submission.create!(params[:Submission])
     if @submission.save
       flash[:notice] = "Your submission for #{Course.find(@submission.course_id).title} was successful"
-      redirict_to :action => :show , :id => @submission.id
+      redirect_to :action => :show , :id => @submission.id
     end
   end
 =begin
