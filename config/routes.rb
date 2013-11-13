@@ -3,6 +3,7 @@ HospitalLink::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
   resources :submissions
+  post '/submit/:course', to: 'submissions#submit', as: :submit
   match '/students', to: 'users#students', via: 'get'
   get '/grade/submission', to: 'submissions#grade', as: :grade_submission
   put '/leave/feedback/:id', to: 'submissions#leave_feedback', as: :leave_feedback

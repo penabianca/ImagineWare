@@ -10,6 +10,7 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    session[:course] = @course
   end
 
   def new

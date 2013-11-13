@@ -1,4 +1,3 @@
--#  This file is app/views/submissions/index.html.haml
 %h2 All Submissions
 %table{:class => "table table-striped table-bordered table-condensed"}
  %thead
@@ -13,4 +12,4 @@
      %td= Course.find(submission.course_id).title
      %td= link_to "#{submission.grade}", submission_path(submission)
      %td= submission.created_at
-     %td= link_to "leave feedback for #{Course.find(submission.course_id).title}", submission_path(submission.id)
+     %td= link_to "#{submission.feedback}", submission_path(submission.id)
