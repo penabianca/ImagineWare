@@ -4,17 +4,22 @@ class SubmissionsController < ApplicationController
     @submission = Submission.find(params[:id])
   end
   def student
-    @student_submissions = Submission.where("user_id = #{session[:current_user]}").to_a
+    @sub = params[:id]
+    @sub1 = @sub.to_i
+    #@student_submissions = Submission.all
+    @student_submissions = Submission.where('user_id' => params[:id].to_i)
   end
   def index
-    @submissions = Submission.where("user_id = #{session[:current_user]}").to_a
+    @submissions = Submission.all
   end
   def new
   end
   def submit
-    @submission = Submission.new_submission(current_user, session[:course])
+    @submission = Submission.new_submission
+    @submission.user_id = session[:current_user]
+    @submission.course_id = session[:course]
     if @submission.save
-      flash.now[:notice] = "Your submission for #{Course.find(@submission.course_id).title} was successful"
+      flash.now[:notice] = "#{session[:current_user]} Your submission for #{Course.find(@submission.course_id).title} was successful"
     end
   end
   def create
@@ -31,8 +36,9 @@ class SubmissionsController < ApplicationController
   end
   def update
     @submission = Submission.find params[:id]
+    @submission.grader_id = session[:current_user].to_i
     @submission.update_attributes!(params[:submission])
-    flash.now[:notice] = "#{User.find(@submission.user_id).first_name}'s submission for #{Course.find(@submission.course_id).title} has been graded"
+    flash[:notice] = "#{User.find(@submission.user_id).first_name}'s submission for #{Course.find(@submission.course_id).title} has been graded"
     redirect_to students_path
   end
 

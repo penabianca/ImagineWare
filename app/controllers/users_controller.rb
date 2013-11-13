@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id]) # look up user by unique ID
   end
   def students
+    
     @students = User.where('instruc' => false).paginate(:page => params[:page],per_page: 5)
   end
 
