@@ -15,7 +15,8 @@
               %li= link_to "All Students", students_path
               %li= link_to "All instructors", instructors_path
             -else
-              %li= link_to "Grades", student_submissions_path(current_user)
+              %li= link_to "Grades", my_grades_path(current_user)
+              /%li= link_to "Grades", my_submissions_path(current_user)
             %li#fat-menu.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
                 Account

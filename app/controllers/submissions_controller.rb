@@ -1,12 +1,13 @@
 class SubmissionsController < ApplicationController
 
+ def my_grades
+    @my_sub = Submission.where('user_id' => session[:current_user])
+  end
+
   def show
     @submission = Submission.find(params[:id])
   end
   def student
-    @sub = params[:id]
-    @sub1 = @sub.to_i
-    #@student_submissions = Submission.all
     @student_submissions = Submission.where('user_id' => params[:id].to_i)
   end
   def index

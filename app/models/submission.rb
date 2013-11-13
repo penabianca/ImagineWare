@@ -3,7 +3,6 @@ class Submission < ActiveRecord::Base
   belongs_to :user
   belongs_to :course
   def self.new_submission
-    new { |u| u.feedback = 'Your submission has not been graded yet',
-      u.grade = 'Pending'}
+    new { |u| u.feedback = "Your submission has not been graded yet", u.grade = "Pending"}
   end
 end
