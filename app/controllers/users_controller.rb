@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
   def new_instructors
   end
+=begin
   def create_instructors
     @user = User.new(params[:user])
     #approves you, you will get notified"
@@ -32,6 +33,7 @@ class UsersController < ApplicationController
       redirect_to @user
     end
   end
+=end
   def create
     @user = User.new(params[:user])
     @user.instruc = "false"
