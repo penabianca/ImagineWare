@@ -5,14 +5,15 @@ Background: users , courses and submissions have been added to the database
  Given the following users exist:
 	|id| first_name | last_name | email               | password   | password_confirmation |instruc|
 	| 1| Sebastian  | Delgado   | sd@gmail.com        | cs169rocks | cs169rocks            |false  |
-	|2 | Ryan       | Wilson    | hotmale@hotmail.com | ilovebacon | ilovebacon            |false  | 
+	|2 | Ryan       | Wilson    | hotmale@hotmail.com | ilovebacon | ilovebacon            |false  |
         |3 |Aime	| Ngongang  | aime@ngongang.com   | blabla     |blabla                 |true   |
 
   Given the following submissions exist:
-    |id | user_id|
-    |1  | 2      |
-    |2  | 3      |
-    |3  |2       |
+    |id | email|
+    |1  | hotmale@hotmail.com |
+    |2  | aime@ngongang.com |
+    |3  | hotmale@hotmail.com |
+
 
   Given the following courses exist:
     |id  | title                   |
@@ -21,13 +22,13 @@ Background: users , courses and submissions have been added to the database
     |3   |Advanced Java            |
 Scenario: An instructor can see all students
   Given I am logged in as "aime@ngongang.com" with password "blabla"
-  Then I should see "All students"
-  When I follow "All students"
+  Then I should see "All Students"
+  When I follow "All Students"
   Then I should see  2 students 
 
 Scenario: A non instructor cannot see all students
   Given I am logged in as "sd@gmail.com" with password "cs169rocks"
-  Then I should not see "All students"
+  Then I should not see "All Students"
 
 Scenario: An instructor can see all the student's submission
   Given I am on the students page
