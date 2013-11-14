@@ -32,10 +32,10 @@ ActiveRecord::Schema.define(:version => 20131113051152) do
   create_table "submissions", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "course_id"
     t.string   "grade"
     t.string   "feedback"
     t.string   "grader_id"
-    t.integer  "course_id"
     t.integer  "user_id"
   end
 
@@ -66,8 +66,11 @@ ActiveRecord::Schema.define(:version => 20131113051152) do
     t.string   "password"
     t.string   "password_confirmation"
     t.string   "remember_token"
-    t.string   "role"
+<<<<<<< HEAD
     t.boolean  "instruc",               :default => false
+=======
+    t.boolean  "instruc"
+>>>>>>> ab0ae38795272ff998b304ccfa433ae3c94c5dd3
     t.boolean  "admin",                 :default => false
   end
 

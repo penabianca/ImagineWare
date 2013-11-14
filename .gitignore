@@ -15,3 +15,6 @@
 /tmp
 *~
 *.swp
+
+# Ignore coverage output
+/coverage
