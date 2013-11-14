@@ -9,7 +9,7 @@
   %tbody
    - @student_submissions.each do |submission|
     %tr
-     %td= Course.find(submission.course_id).title
-     %td= link_to "#{submission.grade}", submission_path(submission)
+     %td= link_to "#{Course.find(submission.course_id).title}",submission_path(submission)
+     %td= submission.grade
      %td= submission.created_at
-     %td= link_to "#{submission.feedback}", submission_path(submission.id)
+     %td= submission.feedback

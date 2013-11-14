@@ -9,8 +9,8 @@
 
 %h3 Content:
 %p#description= @course.content
--if !current_user.admin? and !current_user.instruc?  
-  = button_to 'submit assigment', submit_path(@course)
+-if current_user and not current_user.admin and not current_user.instruc
+  = button_to 'submit assignment', submit_path(@course)
   = link_to 'Back to course list',courses_path 
 -else
   = link_to "Edit #{@course.title}", '#'

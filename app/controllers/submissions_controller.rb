@@ -20,8 +20,10 @@ class SubmissionsController < ApplicationController
     @submission.user_id = session[:current_user]
     @submission.course_id = session[:course]
     if @submission.save
-      flash.now[:notice] = "#{session[:current_user]} Your submission for #{Course.find(@submission.course_id).title} was successful"
+      flash.now[:notice] = "Your submission for #{Course.find(@submission.course_id).title} was successful"
+      flash.keep
     end
+    redirect_to course_path(@submission.course_id)
   end
   def create
     @submission = Submission.new_submission

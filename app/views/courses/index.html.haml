@@ -18,5 +18,5 @@
           %td= link_to "#{course.title}", course_path(course)
           -#%td= "#{course.content}"
 -# add to end of index.html.haml
--if current_user.instruc?
+-if not current_user.nil? and current_user.instruc
   = link_to 'Add new Course', '#'
