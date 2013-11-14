@@ -2,6 +2,7 @@ Given /the following submissions exist/ do |submissions_table|
     submissions_table.hashes.each do |submission|
     # each returned element will be a hash whose key is the table header.
     # you should arrange to add that course to the database here.
+    #Submission.create(submission)
       @sub             = Submission.new
       @sub.id          = submission['id']
       @sub.user_id     = User.find_by_email(submission['email']).id

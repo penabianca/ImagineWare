@@ -15,7 +15,8 @@ module NavigationHelpers
 
     when /^the home\s?page$/
       '/'
-
+    when /^Ryan's submission \s?page$/
+      '/students/submissions/2'
     when /^the courses page$/
       '/courses'
     when /^the "Introduction to HTML5" page$/
