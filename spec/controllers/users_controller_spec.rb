@@ -1,15 +1,15 @@
+=begin
 require 'spec_helper'
 
 describe UsersController do
-  begin describe "POST #create" do
-    it 'creates a new user' do
-      expect{
-        post :create, user: FactoryGirl.attributes_for(:user)
-      }.to change(User,:count).by(1)
+  begin describe "POST #create_instructors" do
+    it 'creates a new instructor user' do
+      post :create_instructors, user: FactoryGirl.attributes_for(:instruc)
+      assigns(:user).should == FactoryGirl.build(:instruc)
     end
-    it 'redirects to users' do
-      post :create, user: FactoryGirl.attributes_for(:user)
-      response.should redirect_to users_path
+    it 'renders the show' do
+      get :show, id: FactoryGirl.create(:user)
+      response.should render_template :show
     end
   end
   describe "GET #index" do
@@ -36,3 +36,4 @@ describe UsersController do
   end
 end
 end
+=end
