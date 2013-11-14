@@ -40,4 +40,4 @@ Scenario: Incorrect file extension error
 	When I submit my assignment file "submission_two.txt"
 	Then I should see "You submitted a file with the wrong file extension, please re-submit a file that ends in '.html'"
 	When I follow "profile"
-	I should not see the following submission: "Introduction to HTML5", "B"
+	Then I should not see the following submission: "Introduction to HTML5", "B"

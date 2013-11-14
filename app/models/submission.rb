@@ -1,5 +1,5 @@
 class Submission < ActiveRecord::Base
-  attr_accessible :grader_id, :grade, :feedback
+  attr_accessible :grader_id, :grade, :feedback, :user_id
   before_save :default_values
   belongs_to :user
   belongs_to :course
