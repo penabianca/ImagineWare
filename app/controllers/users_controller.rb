@@ -4,8 +4,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id]) # look up user by unique ID
   end
+
+  def index
+    @users = User.all
+  end
   def students
-    
     @students = User.where('instruc' => false).paginate(:page => params[:page],per_page: 5)
   end
 
@@ -23,8 +26,10 @@ class UsersController < ApplicationController
     #approves you, you will get notified"
     @user.instruc ="true"
     if @user.save
+      sign_in @user
       flash.now[:notice] = "Thank you for signin up as instructors" 
       UserMailer.verify_instructor(@user).deliver
+      redirect_to @user
     end
   end
   def create
@@ -33,7 +38,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to ImagineWare Online Course Platform."
-      redirect_to  @user
+      redirect_to @user
     else
       flash.now[:fail] = "You did not enter all the fields correctly"
       render 'new'

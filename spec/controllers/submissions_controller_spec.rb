@@ -1,14 +1,40 @@
 require 'spec_helper'
 
 describe SubmissionsController do
-=begin  describe "create submission" do
-    it 'should create a new submission' do
-      SubmissionsController.stub(:create).and_return(mock('sub1'))
-      post :create , {:course_id => "3"}
+  begin describe "POST #create" do
+=begin    
+    it 'creates a new submission' do
+      expect{
+        post :create, submission: FactoryGirl.attributes_for(:submission)
+      }.to change(Submission,:count).by(1)
+    end
+=end
+    it 'renders the show' do
+      get :show, id: FactoryGirl.create(:submission)
+      response.should render_template :show
     end
   end
-  describe "show submission" do
-    
-  do
-=end
+  describe "GET #index" do
+    it 'gets submissions' do
+      submission = FactoryGirl.create(:submission)
+      get :index
+      assigns(:submissions).should eq([submission])
+    end
+    it 'renders index' do
+      get :index
+      response.should render_template :index
+    end
+  end
+  describe "GET #show" do
+    it 'assigns the submission to @submission' do
+      submission = FactoryGirl.create(:submission)
+      get :show, id: submission
+      assigns(:submission).should eq(submission)
+    end
+    it 'renders the show' do
+      get :show, id: FactoryGirl.create(:submission)
+      response.should render_template :show
+    end
+  end
+end
 end
