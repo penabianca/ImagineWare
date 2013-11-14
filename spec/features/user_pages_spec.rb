@@ -77,4 +77,3 @@ describe "User pages" do
     end
   end
 end
-

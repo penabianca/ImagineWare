@@ -1,9 +1,6 @@
 require 'spec_helper'
 
 describe CoursesController do
-  #before do
-    #@a = CoursesController.create(:title => "Introduction to HTML5", :content => "Javascript without the javascript").course
-  #end
   begin describe "POST #create" do
     it 'creates a new course' do
       expect{
