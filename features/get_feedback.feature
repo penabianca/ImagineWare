@@ -13,9 +13,10 @@ Background:
 	| Object Oriented Programming | intermediate,coding | Here you must build classes with inheretance in Java           |
 
 	Given the following users exist:
-	| first_name | last_name | email               | password   |
-	| Sebastian  | Delgado   | sd@gmail.com        | cs169rocks |
-	| Ryan       | Wilson    | hotmale@hotmail.com | ilovebacon |
+	|id| first_name | last_name | email               | password   | password_confirmation |instruc|
+	|1 | Sebastian  | Delgado   | sd@gmail.com        | cs169rocks | cs169rocks            |false  |
+	|2 | Ryan       | Wilson    | hotmale@hotmail.com | ilovebacon | ilovebacon            |false  |
+        |3 | Aime	| Ngongang  | aime@ngongang.com   | blabla     |blabla                 |true   |
 	
 	Given that sd@gmail.com is logged in with password cs169rocks
 	Given I am on the courses page
@@ -23,14 +24,33 @@ Background:
         When I follow "Introduction to HTML5"
 	Then I should be on the "Introduction to HTML5" course page
 
-Scenario: Upload file and get feedback
+Scenario: make a submission and get feedback
 
 	When I press "submit assignment"
 	Then I should see "Your submission for Introduction to HTML5 was successful"
 	Then I should be on the "Introduction to HTML5" course page
 	When I follow "Grades"
 	Then I should be on the my_grades page for "sd@gmail.com"
-	Then I should see the following submission: "Introduction to HTML5", "Pending"
-	Given that my "Introduction to HTML5" submission gets graded with a "B"
-	When I press on "profile"
-	Then I should see the following submission: "Introduction to HTML5", "B"
+	Then I should see "Introduction to HTML5"
+	Then I should see "Pending"
+	
+	When I follow "Sign out"
+	Given that aime@ngongang.com is logged in with password blabla
+
+	Given I am on Sebastian's submission page
+	Then I should see "Introduction to HTML5"
+	When I follow "Introduction to HTML5"
+	Then I should see "grade assignment"
+	When I follow "grade assignment"
+	When I fill "Grade" with "B"
+	When I fill "Feedback" with "Awesome stuff!"
+	Then I press "Submit grade"
+	Then I should see "Sebastian's submission for Introduction to HTML5 has been graded"
+	
+	When I follow "Sign out"
+	Given that sd@gmail.com is logged in with password cs169rocks
+
+	When I follow "Grades"
+	Then I should be on the my_grades page for "sd@gmail.com"
+	Then I should see "Introduction to HTML5"
+	Then I should see "B"
