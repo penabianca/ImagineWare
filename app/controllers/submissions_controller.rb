@@ -24,14 +24,14 @@ class SubmissionsController < ApplicationController
     end
   end
   def create
-    @submission = params[:submission]? Submission.new(params[:submission]): Submission.new_submission
+    @submission = Submission.new_submission
+    @submission.user_id = session[:current_user]
+    @submission.course_id = session[:course]
     if @submission.save
-      flash[:notice] = "Your submission for #{Course.find(@submission.course_id).title} was successful"
-      redirect_to :action => :show , :id => @submission.id
-    else
-      render "new"
+      flash.now[:notice] = "#{session[:current_user]} Your submission for #{Course.find(@submission.course_id).title} was successful"
     end
   end
+
   def edit
     @submission = Submission.find params[:id]
   end
