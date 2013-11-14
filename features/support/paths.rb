@@ -18,8 +18,10 @@ module NavigationHelpers
 
     when /^the courses page$/
       '/courses'
-    when /^the "Introduction to HTML5" page$/
-      '/courses/1'
+    when /^the "(.*)" course page$/
+      "/courses/#{Course.find_by_title($1).id}"
+    when /^the my_grades page for "(.*)"$/
+      "/student/grades/#{User.find_by_email($1).id}"
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

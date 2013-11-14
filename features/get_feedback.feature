@@ -21,15 +21,15 @@ Background:
 	Given I am on the courses page
         Then I should see "Introduction to HTML5"
         When I follow "Introduction to HTML5"
-	Then I should be on the "Introduction to HTML5" page
+	Then I should be on the "Introduction to HTML5" course page
 
 Scenario: Upload file and get feedback
 
-	When I submit my assignment
-	Then I should see "Your submission for Introduction to HTML5 was successful" message
-	Then I should be on the "Introduction to HTML5" page
-	When I follow "profile"
-	Then I should be on the "Profile" page
+	When I press "submit assignment"
+	Then I should see "Your submission for Introduction to HTML5 was successful"
+	Then I should be on the "Introduction to HTML5" course page
+	When I follow "Grades"
+	Then I should be on the my_grades page for "sd@gmail.com"
 	Then I should see the following submission: "Introduction to HTML5", "Pending"
 	Given that my "Introduction to HTML5" submission gets graded with a "B"
 	When I press on "profile"
