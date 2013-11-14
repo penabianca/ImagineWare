@@ -1,12 +1,3 @@
-Given /the following (.*?) exist:$/ do |type, table|
-  table.hashes.each do |element|
-    if type == "users" then User.create(element)
-    elsif type =="submissions" then Submission.create(element)
-    elsif type =="courses" then Course.create(element)
-    end
-  end
-end
-
 Given /I am logged in as "(.*?)" with password "(.*?)"$/ do |user, pass|
   
   visit '/signin'
