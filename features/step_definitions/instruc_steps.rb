@@ -9,6 +9,8 @@ end
 Given /I am on the "(.*?)" page$/ do |page|
   if page == "students"
     visit '/students'
+  elsif page == "Ryan's submission"
+    visit '/students/submission/2'
   end
 end
 
@@ -18,4 +20,8 @@ Then (/^I should see (\d+) (.*?)$/) do |count,table|
   elsif table =="submissions" then
     assert Submission.where('user_id' =>2).size == Integer(count)
   end
+end
+
+When(/^I fill "(.*?)" with "(.*?)"$/) do |arg1, arg2|
+  fill_in arg1, :with => arg2
 end
