@@ -12,7 +12,7 @@ Given /I am on the "(.*?)" page$/ do |page|
   end
 end
 
-Then (/^I should see  (\d+) (.*?)$/) do |count,table|
+Then (/^I should see (\d+) (.*?)$/) do |count,table|
   if table == "students" then
     assert User.where('instruc' => false).size == Integer(count)
   elsif table =="submissions" then

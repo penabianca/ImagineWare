@@ -24,7 +24,7 @@ Scenario: An instructor can see all students
   Given I am logged in as "aime@ngongang.com" with password "blabla"
   Then I should see "All Students"
   When I follow "All Students"
-  Then I should see  2 students 
+  Then I should see 2 students
 
 Scenario: A non instructor cannot see all students
   Given I am logged in as "sd@gmail.com" with password "cs169rocks"
