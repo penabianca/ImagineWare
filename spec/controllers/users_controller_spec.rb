@@ -4,8 +4,8 @@ require 'spec_helper'
 describe UsersController do
   begin describe "POST #create_instructors" do
     it 'creates a new instructor user' do
-      post :create_instructors, user: FactoryGirl.attributes_for(:instruc)
-      assigns(:user).should == FactoryGirl.build(:instruc)
+      post :create_instructors, user: FactoryGirl.attributes_for(:instructor)
+      assigns(:user).should == FactoryGirl.build(:instructor)
     end
     it 'renders the show' do
       get :show, id: FactoryGirl.create(:user)
