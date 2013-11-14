@@ -18,14 +18,15 @@ Background:
 	|2 | Ryan       | Wilson    | hotmale@hotmail.com | ilovebacon | ilovebacon            |false  |
         |3 | Aime	| Ngongang  | aime@ngongang.com   | blabla     |blabla                 |true   |
 	
+
+
+Scenario: make a submission and get feedback
+
 	Given that sd@gmail.com is logged in with password cs169rocks
 	Given I am on the courses page
         Then I should see "Introduction to HTML5"
         When I follow "Introduction to HTML5"
 	Then I should be on the "Introduction to HTML5" course page
-
-Scenario: make a submission and get feedback
-
 	When I press "submit assignment"
 	Then I should see "Your submission for Introduction to HTML5 was successful"
 	Then I should be on the "Introduction to HTML5" course page
@@ -54,3 +55,11 @@ Scenario: make a submission and get feedback
 	Then I should be on the my_grades page for "sd@gmail.com"
 	Then I should see "Introduction to HTML5"
 	Then I should see "B"
+
+Scenario: admin cannot submit in the course view (sad path)
+
+	Given that aime@ngongang.com is logged in with password blabla
+	Given I am on the courses page
+	Then I should see "Introduction to HTML5"
+	When I follow "Introduction to HTML5"
+	Then I should not see "submit assignment"
