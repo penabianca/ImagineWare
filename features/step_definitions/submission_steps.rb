@@ -5,6 +5,7 @@ Given /the following submissions exist/ do |submissions_table|
       @sub             = Submission.new
       @sub.id          = submission['id']
       @sub.user_id     = User.find_by_email(submission['email']).id
+      @sub.course_id   = Course.find_by_title(submission['title']).id
       @sub.save
     end
 end

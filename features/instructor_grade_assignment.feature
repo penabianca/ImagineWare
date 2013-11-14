@@ -6,20 +6,20 @@ Background: users , courses and submissions have been added to the database
 	|id| first_name | last_name | email               | password   | password_confirmation |instruc|
 	| 1| Sebastian  | Delgado   | sd@gmail.com        | cs169rocks | cs169rocks            |false  |
 	|2 | Ryan       | Wilson    | hotmale@hotmail.com | ilovebacon | ilovebacon            |false  |
-        |3 |Aime	| Ngongang  | aime@ngongang.com   | blabla     |blabla                 |true   |
+  |3 |Aime	      | Ngongang  | aime@ngongang.com   | blabla     |blabla                 |true   |
 
-  Given the following submissions exist:
-    |id | email|
-    |1  | hotmale@hotmail.com |
-    |2  | aime@ngongang.com |
-    |3  | hotmale@hotmail.com |
+Given the following courses exist:
+  |id  | title                   |
+  |1   |Intro to computer science|
+  |2   |Intro to ruby            |
+  |3   |Advanced Java            |
 
+Given the following submissions exist:
+  |id | email               | title                     |
+  |1  | hotmale@hotmail.com | Intro to computer science |
+  |2  | aime@ngongang.com   | Intro to ruby             |
+  |3  | hotmale@hotmail.com | Advanced Java             |
 
-  Given the following courses exist:
-    |id  | title                   |
-    |1   |Intro to computer science|
-    |2   |Intro to ruby            |
-    |3   |Advanced Java            |
 Scenario: An instructor can see all students
   Given I am logged in as "aime@ngongang.com" with password "blabla"
   Then I should see "All Students"
