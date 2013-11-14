@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 require 'simplecov'
 SimpleCov.start do
 end
 
+=======
+>>>>>>> ab0ae38795272ff998b304ccfa433ae3c94c5dd3
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)

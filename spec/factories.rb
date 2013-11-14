@@ -5,5 +5,10 @@ FactoryGirl.define do
     email    "aime@ngongang.com"
     password "penabianca"
     password_confirmation "penabianca"
+ 
+    factory :admin do
+      admin true
+    end
   end
+ 
 end

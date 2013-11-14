@@ -66,7 +66,11 @@ ActiveRecord::Schema.define(:version => 20131113051152) do
     t.string   "password"
     t.string   "password_confirmation"
     t.string   "remember_token"
+<<<<<<< HEAD
     t.boolean  "instruc",               :default => false
+=======
+    t.boolean  "instruc"
+>>>>>>> ab0ae38795272ff998b304ccfa433ae3c94c5dd3
     t.boolean  "admin",                 :default => false
   end
 
