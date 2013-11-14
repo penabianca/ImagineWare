@@ -3,20 +3,22 @@ HospitalLink::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
   resources :submissions
+  post '/submit/:course', to: 'submissions#submit', as: :submit
+  match '/students', to: 'users#students', via: 'get'
+  get '/student/grades/:id', to: 'submissions#my_grades', as: :my_grades
+  put '/leave/feedback/:id', to: 'submissions#leave_feedback', as: :leave_feedback
+  get '/students/submissions/:id', to: 'submissions#student', as: :student_submissions
+  match '/instructors', to: 'users#instructors', via: 'get'
+  match '/create/instructors', to: 'users#create_instructors', via: 'post'  
   match '/signin',  to: 'sessions#new', via: 'get'
-  match '/signup', to: 'users#new' , via: 'get'
+  match '/signup/students', to: 'users#new' , via: 'get'
+  match '/signup/instructors', to: 'users#new_instructors', via: 'get'
   match '/help', to:  'static_pages#help' , via: 'get'
   match '/about', to:   'static_pages#about', via: 'get'
   match '/contact', to: 'static_pages#contact' , via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
-
-  resources :courses, only: [:index, :show]
+  resources :courses
   get 'tags/:tag', to: 'courses#index', as: :tag
-
-  namespace :admin do
-    match       '/dashboard', to: 'dashboard#index', via: 'get'
-    resources   :courses, only: [:index, :new, :create, :edit, :update, :destroy]
-  end
 
 
   # The priority is based upon order of creation:

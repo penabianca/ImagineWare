@@ -1,0 +1,9 @@
+- provide(:title, 'All students')
+%h2 All students
+%ul.students
+  - @students1.each do |student|
+    %li
+      //= gravatar_for student
+      = link_to student.first_name + '  ' + student.last_name, student_submissions_path(student)
+      | #{link_to "delete", student, method: :delete, data: {confirm: "You sure?"}}
+= will_paginate @students1

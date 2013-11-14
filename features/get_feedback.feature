@@ -25,19 +25,12 @@ Background:
 
 Scenario: Upload file and get feedback
 
-	When I submit my assignment file "submission_one.html"
+	When I submit my assignment
 	Then I should see "Your submission for Introduction to HTML5 was successful" message
 	Then I should be on the "Introduction to HTML5" page
-	When I follow "courses"
-	Then I should be on the "Courses" page
+	When I follow "profile"
+	Then I should be on the "Profile" page
 	Then I should see the following submission: "Introduction to HTML5", "Pending"
 	Given that my "Introduction to HTML5" submission gets graded with a "B"
-	When I follow "courses"
+	When I press on "profile"
 	Then I should see the following submission: "Introduction to HTML5", "B"
-
-Scenario: Incorrect file extension error
-
-	When I submit my assignment file "submission_two.txt"
-	Then I should see "You submitted a file with the wrong file extension, please re-submit a file that ends in '.html'"
-	When I follow "profile"
-	I should not see the following submission: "Introduction to HTML5", "B"
