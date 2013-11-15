@@ -10,3 +10,5 @@
   %li
     Feedback:
     = @submission.feedback
+-if current_user.instruc? or current_user.admin?
+  =link_to 'grade assignment', edit_submission_path(@submission)

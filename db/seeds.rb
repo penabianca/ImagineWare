@@ -18,15 +18,7 @@
 #  Course.create!(course)
 #end
 
-some_submissions = [
-{:user_id =>1, :course_id =>1},
-{:user_id =>1, :course_id =>2},
-{:user_id =>2, :course_id =>3},
-]
-Submission.send(:attr_accessible, :student_id, :course_id)
-some_submissions.each do |submission|
-  Submission.create!(submission)
-end
+
 
 
 list = ['web', 'android', 'beginner']

@@ -1,10 +1,8 @@
 class Submission < ActiveRecord::Base
-  attr_accessible :grader_id, :grade, :feedback, :user_id
-  before_save :default_values
+  attr_accessible :grader_id , :grade, :feedback, :user, :course
   belongs_to :user
   belongs_to :course
-  def default_values
-    self.feedback ||= 'Your submission has not been graded yet'
-    self.grade ||= 'Pending'
+  def self.new_submission
+    new { |u| u.feedback = "student's submission", u.grade = "Pending"}
   end
 end

@@ -1,5 +1,5 @@
 def full_title(page_title)
-  base_title = "Hospital Linked App"
+  base_title = "ImagineWare"
   if page_title.empty?
     base_title
   else

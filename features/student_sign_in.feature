@@ -12,8 +12,7 @@ Feature: Student account in the ImagineWare course platform
   Given I am on the home page
 
   Scenario: Create an account for the first time
-    Then I should see "Sign up now!"
-    When I follow "Sign up now!"
+    When I follow "Students"
     When I fill in "user_first_name" with "Sebastian"
     When I fill in "user_last_name" with "Delgado"
     When I fill in "user_email" with "sd@gmail.com"
@@ -23,8 +22,7 @@ Feature: Student account in the ImagineWare course platform
     Then I should see "Sebastian"
 
   Scenario: Create an account entering mismatched passwords
-    Then I should see "Sign up now!"
-    When I follow "Sign up now!"
+    When I follow "Students"
     When I fill in "user_first_name" with "Sebastian"
     When I fill in "user_last_name" with "Delgado"
     When I fill in "user_email" with "sd@gmail.com"

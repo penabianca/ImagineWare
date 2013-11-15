@@ -1,9 +1,8 @@
 class User < ActiveRecord::Base
-  ROLES = %w[admin student banned]
+  ActiveModel::ForbiddenAttributesProtection
   before_create :create_remember_token
   before_save { self.email = email.downcase }
-  before_save :check_privilege
-  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_token, :role
+  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_token, :instruc
 
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, presence: true, length: {maximum: 50}
@@ -16,10 +15,6 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  def User.admin?
-    self.role == 'admin'
-  end
-
   def User.new_remember_token
     SecureRandom.urlsafe_base64
   end
@@ -30,10 +25,7 @@ class User < ActiveRecord::Base
 
   private
 
-  def check_privilege
-    self.role ||= 'student'
-  end
-  def create_remember_token
-    self.remember_token = User.encrypt(User.new_remember_token)
-  end
+    def create_remember_token
+      self.remember_token = User.encrypt(User.new_remember_token)
+    end
 end

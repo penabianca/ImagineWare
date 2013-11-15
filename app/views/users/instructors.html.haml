@@ -1,0 +1,9 @@
+- provide(:title, 'All instructors')
+%h2 All instructorss
+%ul.instructors
+  - @instructors.each do |instructor|
+    %li
+      //= gravatar_for student
+      #{instructor.first_name} #{instructor.last_name}
+      | #{link_to "delete", instructor, method: :delete, data: {confirm: "You sure?"}}
+= will_paginate @instructors
