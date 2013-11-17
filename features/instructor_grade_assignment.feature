@@ -46,3 +46,4 @@ Scenario: An instructor can grade an assignment
   When I fill "Feedback" with "good job"
   Then I press "Submit grade"
   Then I should see "Ryan's submission for Intro to computer science has been graded"
+  Then I should see  2 submissions 
