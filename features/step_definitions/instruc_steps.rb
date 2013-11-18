@@ -1,3 +1,4 @@
+
 Given /I am logged in as "(.*?)" with password "(.*?)"$/ do |user, pass|
   
   visit '/signin'
@@ -16,7 +17,7 @@ end
 
 Then (/^I should see (\d+) (.*?)$/) do |count,table|
   if table == "students" then
-    assert User.where('instruc' => false).size == Integer(count)
+    assert User.where('instruc' => false, 'admin' => false).size == Integer(count)
   elsif table =="submissions" then
     assert Submission.where('user_id' =>2).size == Integer(count)
 end
