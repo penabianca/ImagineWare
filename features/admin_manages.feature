@@ -36,9 +36,18 @@ Scenario: Deleting an invalid student
     Then I should see "delete"
     When I follow "delete"
     Then I should see "You sure"
+    When I press "OK"
+    Then I should see "User Sebastian deleted"
 
 Scenario: Deleting an invalid instructor
-
+    Given I am logged in as "admin@man.com" with password "adminman"
+    Then I should see "All instructors"
+    When I follow "All instructors"
+    Then I should see "delete"
+    When I follow "delete"
+    Then I should see "You sure"
+    When I press "OK"
+    Then I should see "User Aime deleted"
 
 
 

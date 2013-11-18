@@ -20,6 +20,7 @@ Then (/^I should see (\d+) (.*?)$/) do |count,table|
     assert User.where('instruc' => false, 'admin' => false).size == Integer(count)
   elsif table =="submissions" then
     assert Submission.where('user_id' =>2).size == Integer(count)
+  end
 end
 
 When(/^I fill "(.*?)" with "(.*?)"$/) do |arg1, arg2|
