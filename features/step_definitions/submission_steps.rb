@@ -11,6 +11,20 @@ Given /the following submissions exist/ do |submissions_table|
     end
 end
 
+When /^I attach an html file$/ do 
+    attach_file(:html_file, File.join(RAILS_ROOT, 'features', 'uploads', 'some_html_submission.html'))
+end
+
+When /^I attach a ruby file$/ do 
+    attach_file(:ruby_file, File.join(RAILS_ROOT, 'features', 'uploads', 'some_ruby_submission.rb'))
+end
+
+Then /^I should receive the file "(.*)"$/ do |file|
+    correct_content_type = page.response_headers['Content-Type'].should == "application/octect-stream"
+    correct_content_disposition = page.response_headers['Content-Disposition'].should =~ /#{file}/
+    assert correct_content_type and correct_content_disposition
+end
+
 When(/^I submit my assignment$/) do
     pending # express the regexp above with the code you wish you had
 end
@@ -20,6 +34,10 @@ Then(/^I should see "(.*?)" message$/) do |arg1|
 end
 
 Then(/^I should see the following submission: "(.*?)", "(.*?)"$/) do |arg1, arg2|
+    pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I should not see the following submission: "(.*?)", "(.*?)"$/) do |arg1, arg2|
     pending # express the regexp above with the code you wish you had
 end
 

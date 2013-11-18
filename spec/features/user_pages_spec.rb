@@ -22,26 +22,31 @@ describe "User pages" do
     let(:submit) { "Create my account" }
 
     describe "with invalid information" do
+      before do
+        fill_in "user_first_name",    with: "Aime"
+        fill_in "user_last_name",     with: "Ngongang"
+        fill_in "user_email",         with: "aime@@b@@ngongang.com"
+        fill_in "user_password",      with: "penabianca"
+        fill_in "user_password_confirmation", with: "penabianca"
+      end
       it "should not create a user" do
         expect { click_button submit }.not_to change(User, :count)
       end
     end
-=begin
     describe "with valid information" do
       before do
-        fill_in "FirstName",    with: "Aime"
-        fill_in "LastName",     with: "Ngongang"
-        fill_in "Email",        with: "aime@ngongang.com"
-        fill_in "Password",     with: "penabianca"
-        fill_in "Confirmation", with: "penabianca"
+        fill_in "user_first_name",    with: "Aime"
+        fill_in "user_last_name",     with: "Ngongang"
+        fill_in "user_email",         with: "aime@ngongang.com"
+        fill_in "user_password",      with: "penabianca"
+        fill_in "user_password_confirmation", with: "penabianca"
       end
-
       it "should create a user" do
         expect { click_button submit }.to change(User, :count).by(1)
       end
     end
-=end
   end
+=begin
   it { should respond_to(:authenticate) }
   it { should respond_to(:admin) }
 
@@ -76,5 +81,5 @@ describe "User pages" do
        it { should_not have_link('delete', href: user_path(admin)) }
     end
   end
+=end
 end
-

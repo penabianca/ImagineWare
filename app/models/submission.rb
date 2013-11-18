@@ -1,5 +1,5 @@
 class Submission < ActiveRecord::Base
-  attr_accessible :user_id,:grader_id , :grade, :feedback, :course_id
+  attr_accessible :grader_id , :grade, :feedback, :user, :course
   belongs_to :user
   belongs_to :course
   def self.new_submission
