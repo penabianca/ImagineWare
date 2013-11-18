@@ -47,7 +47,6 @@ class UsersController < ApplicationController
     end
     #redirect_to users_path
   end
-=begin
   def destroy
     @user = User.find(params[:id])
     @user.destroy
@@ -63,10 +62,10 @@ class UsersController < ApplicationController
       flash[:sucess] ="Profile updated"
       redirect_to @user
     else
+      flash[:error] = "Invalid update informations"
       render 'edit'
     end
   end
-=end
   private 
     def user_params
       params.require(:user).permit(:first_name,:last_name, :email, :password,:password_confirmation)

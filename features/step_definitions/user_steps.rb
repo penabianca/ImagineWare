@@ -10,6 +10,7 @@ Given /the following users exist/ do |users_table|
       @user.password    = user['password']
       @user.password_confirmation = user['password']
       @user.instruc     = (user['instruc'] == 'true' ? true : false)
+      @user.admin       = (user['admin'] == 'true' ? true : false)
       @user.save
     end
 end

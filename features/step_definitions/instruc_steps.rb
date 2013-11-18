@@ -1,17 +1,4 @@
-<<<<<<< Updated upstream
-=======
-Given /the following (.*?) exist:$/ do |type, table|
-  table.hashes.each do |element|
-    if type == "users" then User.create(element)
-    elsif type =="submissions" then Submission.create(element)
-    elsif type =="courses" then Course.create(element)
-    end
-  end
-end
-Given /^this instructor exist:$/ do 
-    FactoryGirl.create(:instruc)
-end
->>>>>>> Stashed changes
+
 Given /I am logged in as "(.*?)" with password "(.*?)"$/ do |user, pass|
   
   visit '/signin'
@@ -28,17 +15,11 @@ Given /I am on the "(.*?)" page$/ do |page|
   end
 end
 
-<<<<<<< Updated upstream
 Then (/^I should see (\d+) (.*?)$/) do |count,table|
   if table == "students" then
-    assert User.where('instruc' => false).size == Integer(count)
+    assert User.where('instruc' => false, 'admin' => false).size == Integer(count)
   elsif table =="submissions" then
     assert Submission.where('user_id' =>2).size == Integer(count)
-=======
-Then (/^I should see  (\d+) (.*?)$/) do |count,table|
-  if table == "students" then assert User.where('instruc' => false).size == Integer(count)
-  elsif table =="submissions" then assert Submission.where('user_id' =>2).size == Integer(count)
->>>>>>> Stashed changes
   end
 end
 
