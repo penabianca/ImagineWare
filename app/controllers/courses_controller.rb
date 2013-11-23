@@ -6,6 +6,7 @@ class CoursesController < ApplicationController
     else
       @courses = Course.all
     end
+    #render :file => 'app\views\courses\show.html.haml'
   end
 
   def show
@@ -22,6 +23,8 @@ class CoursesController < ApplicationController
     flash[:notice] = "#{@course.title} was successfully created."
     redirect_to courses_path
   end
+  
+  
 
   #def index
   #  @all_tags = Course.all_tags

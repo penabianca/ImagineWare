@@ -17,6 +17,10 @@ class SubmissionsController < ApplicationController
   end
   def new
   end
+  def uploadFile
+    post = DataFile.save(params[:upload])
+    render :text => "File has been uploaded successfully"
+  end
   def submit
     @submission = Submission.new_submission
     @submission.user_id = session[:current_user]

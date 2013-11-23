@@ -4,6 +4,7 @@ HospitalLink::Application.routes.draw do
   resources :users
   resources :submissions
   post '/submit/:course', to: 'submissions#submit', as: :submit
+  post '/upload', to: 'submissions#uploadFile' , as: :upload
   match '/students', to: 'users#students', via: 'get'
   get '/instructors/request/accept/:id', to: 'users#accept' , as: :accept_request
   get '/instructors/requests', to: 'users#requests', as: :request

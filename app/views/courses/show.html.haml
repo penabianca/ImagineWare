@@ -10,6 +10,15 @@
 %h3 Content:
 %p#description= @course.content
 -if current_user and not current_user.admin and not current_user.instruc
+  = form_tag({:controller => :submissions, :action => :uploadFile}, {:multipart => true, :method => :post, :html => { :class => "form-horizontal"}}) do
+    %fieldset
+      %legend Data
+      %ol.field-list
+        %li
+          %label{:for => "data-file"} Select File
+          = file_field 'upload', 'datafile'
+      .form-actions
+        = submit_tag "Upload"
   = button_to 'submit assignment', submit_path(@course)
   = link_to 'Back to course list',courses_path 
 -else
