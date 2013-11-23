@@ -3,7 +3,7 @@
 =form_tag submission_path(@submission), :method => :put do
 
   =label :submission, :grade, 'Grade'
-  = text_field :submission, 'grade'
+  = select  :submission, :grade, Course.all_grades
 
   =label :submission, :feedback, 'Feedback'
   =text_area :submission, 'feedback'

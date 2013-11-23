@@ -5,8 +5,10 @@ HospitalLink::Application.routes.draw do
   resources :submissions
   post '/submit/:course', to: 'submissions#submit', as: :submit
   match '/students', to: 'users#students', via: 'get'
+  get '/instructors/request/accept/:id', to: 'users#accept' , as: :accept_request
+  get '/instructors/requests', to: 'users#requests', as: :request
+  get 'submissions/grades/pending' ,to: 'submissions#assignments_to_grade', as: :assign_to_grade
   get '/student/grades/:id', to: 'submissions#my_grades', as: :my_grades
-  put '/leave/feedback/:id', to: 'submissions#leave_feedback', as: :leave_feedback
   get '/students/submissions/:id', to: 'submissions#student', as: :student_submissions
   match '/instructors', to: 'users#instructors', via: 'get'
   match '/create/instructors', to: 'users#create_instructors', via: 'post'  

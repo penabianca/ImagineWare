@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :signed_in_user , only: [:index,:edit,:update]
   before_filter :correct_user, only: [:edit, :update]
+  before_filter :admin_user, only: [:destroy,:update]
   def show
     @user = User.find(params[:id]) # look up user by unique ID
   end
@@ -9,41 +10,64 @@ class UsersController < ApplicationController
     @users = User.all
   end
   def students
-    @students = User.where('instruc' => false).paginate(:page => params[:page],per_page: 5)
+    @students = User.students.paginate(:page => params[:page],per_page: 5)
   end
 
   def instructors
-    @instructors = User.where('instruc' => true).paginate(:page => params[:page],per_page: 5)
+    @instructors = User.instructors.paginate(:page => params[:page],per_page: 5)
   end
 
   def new
     # default: render 'new' template
   end
-  def new_instructors
+  def requests
+    @req = User.instructors_requests.paginate(:page => params[:page],per_page: 5)
   end
-=begin
+  def accept
+    @user = User.find(params[:id])
+    @user.status = "approved"
+    @user.instruc = true
+    if @user.save!
+      flash[:success] = "yeeeah"
+    else
+      flash[:failure] = "Sorry '#{@user.first_name}' '#{@user.instruc}' '#{@user.status}' '#{@user.password}'"
+    end
+
+  end
   def create_instructors
     @user = User.new(params[:user])
-    #approves you, you will get notified"
-    @user.instruc ="true"
-    if @user.save
-      sign_in @user
-      flash.now[:notice] = "Thank you for signin up as instructors" 
-      UserMailer.verify_instructor(@user).deliver
-      redirect_to @user
+    if @user.password.blank? or @user.password.length <6
+      flash[:error] =". Password should be at least six characters long"
+      render 'new'
+    elsif @user.password_confirmation.blank? or @user.password_confirmation.length <6
+      flash[:error] = ". Password confirmation should be at least six characters long"
+      render 'new'
+    else
+      @user.status = "pending"
+      if @user.save
+        UserMailer.verify_instructor(@user).deliver
+      end
     end
   end
-=end
   def create
     @user = User.new(params[:user])
-    @user.instruc = "false"
-    if @user.save
-      sign_in @user
-      flash[:success] = "Welcome to ImagineWare Online Course Platform."
-      redirect_to @user
-    else
-      flash.now[:fail] = "You did not enter all the fields correctly"
+    if @user.password.blank? or @user.password.length <6
+      flash[:error] =". Password should be at least six characters long"
       render 'new'
+    elsif @user.password_confirmation.blank? or @user.password_confirmation.length <6
+      flash[:error] = ". Password confirmation should be at least six characters long"
+      render 'new'
+    else
+      @user.instruc = false
+      @user.status = "approved"
+      if @user.save
+        sign_in @user
+        flash[:success] = "Welcome to ImagineWare Online Course Platform."
+        redirect_to @user
+      else
+        flash.now[:error] = "You did not enter all the fields correctly"
+        render 'new'
+      end
     end
     #redirect_to users_path
   end
@@ -76,6 +100,9 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to (root_url) unless current_user?(@user)
+    end
+    def admin_user
+      redirect_to (root_path) unless current_user.admin?
     end
 
 end

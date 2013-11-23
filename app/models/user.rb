@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, presence: true, length: {maximum: 50}
-  validates :password, presence: true, length: { minimum: 6 }
-  validates :password_confirmation, presence: true, length: {minimum: 6}
+  #validates :password, presence: true, length: { minimum: 6 }
+  #validates :password_confirmation, presence: true, length: {minimum: 6}
   #validates :email, presence: true
   VALID_EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   validates :email, presence: true,format: { with: VALID_EMAIL_REGEX },uniqueness:{ case_sensitive: false }
@@ -15,6 +15,15 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  def self.instructors_requests
+    User.where(:status => "pending",:instruc => false)
+  end
+  def self.instructors
+    User.where('instruc' => true)
+  end
+  def self.students
+    User.where('instruc' => false, 'admin' => false, 'status' => "approved")
+  end
   def User.new_remember_token
     SecureRandom.urlsafe_base64
   end

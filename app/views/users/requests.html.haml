@@ -1,0 +1,10 @@
+- provide(:title, 'All instructors')
+%h2 Instructors requests
+%ul.requests
+  - @req.each do |instructor|
+    %li
+      //= gravatar_for student
+      #{instructor.first_name} #{instructor.last_name}
+      | #{link_to "accept", accept_request_path(instructor)}
+      | #{link_to "deny", instructor, method: :delete , data: {confirm: "Are you sure ?"}} 
+= will_paginate @req

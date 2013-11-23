@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default to: Proc.new{User.where('instruc'=> true ).pluck(:email)},
+  default to: Proc.new{User.where('admin'=> true ).pluck(:email)},
          from: 'imaginewarecs169group19@gmail.com'
 
 

@@ -1,14 +1,16 @@
 class SubmissionsController < ApplicationController
 
- def my_grades
+  def my_grades
     @my_sub = Submission.where('user_id' => session[:current_user])
   end
-
+  def assignments_to_grade
+    @to_grade = Submission.non_graded_assignments
+  end
   def show
     @submission = Submission.find(params[:id])
   end
   def student
-    @student_submissions = Submission.where('user_id' => params[:id].to_i)
+    @student_submissions = Submission.student_submissions(params[:id])
   end
   def index
     @submissions = Submission.all
@@ -24,14 +26,6 @@ class SubmissionsController < ApplicationController
       flash.keep
     end
     redirect_to course_path(@submission.course_id)
-  end
-  def create
-    @submission = Submission.new_submission
-    @submission.user_id = session[:current_user]
-    @submission.course_id = session[:course]
-    if @submission.save
-      flash.now[:notice] = "#{session[:current_user]} Your submission for #{Course.find(@submission.course_id).title} was successful"
-    end
   end
 
   def edit
