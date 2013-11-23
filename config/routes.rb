@@ -11,18 +11,16 @@ HospitalLink::Application.routes.draw do
   get '/student/grades/:id', to: 'submissions#my_grades', as: :my_grades
   get '/students/submissions/:id', to: 'submissions#student', as: :student_submissions
   match '/instructors', to: 'users#instructors', via: 'get'
-  match '/create/instructors', to: 'users#create_instructors', via: 'post'  
   match '/signin',  to: 'sessions#new', via: 'get'
   match '/signup/students', to: 'users#new' , via: 'get'
-  match '/signup/instructors', to: 'users#new_instructors', via: 'get'
   match '/help', to:  'static_pages#help' , via: 'get'
   match '/about', to:   'static_pages#about', via: 'get'
   match '/contact', to: 'static_pages#contact' , via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
   resources :courses
   get 'tags/:tag', to: 'courses#index', as: :tag
-
-
+  match '/signup/instructors', to: 'users#new_instructors', via: 'get'
+  match '/create/instructors', to: 'users#create_instructors', via: 'post'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

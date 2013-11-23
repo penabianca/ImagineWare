@@ -27,10 +27,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.status = "approved"
     @user.instruc = true
-    if @user.save!
-      flash[:success] = "yeeeah"
+    if @user.save
+      UserMailer.welcome_instructor(@user).deliver
+      flash.now[:success] = "Thanks for approving Mr #{@user.first_name} #{@user.last_name} as an instructor!"
+
     else
-      flash[:failure] = "Sorry '#{@user.first_name}' '#{@user.instruc}' '#{@user.status}' '#{@user.password}'"
+      flash.now[:error] = "Sorry #{@user.first_name} #{@user.instruc} #{@user.status} #{@user.password}"
     end
 
   end
@@ -38,10 +40,10 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.password.blank? or @user.password.length <6
       flash[:error] =". Password should be at least six characters long"
-      render 'new'
+      redirect_to signup_instructor_path
     elsif @user.password_confirmation.blank? or @user.password_confirmation.length <6
       flash[:error] = ". Password confirmation should be at least six characters long"
-      render 'new'
+      redirect_to signup_instructor_path
     else
       @user.status = "pending"
       if @user.save
