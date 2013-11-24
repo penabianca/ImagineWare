@@ -14,11 +14,10 @@ class CoursesController < ApplicationController
   end
 
   def new
-    # default: render 'new' template
   end
 
   def create
-    @course = Course.create!(params[:Course])
+    @course = Course.create!(params[:course])
     flash[:notice] = "#{@course.title} was successfully created."
     redirect_to courses_path
   end
