@@ -4,13 +4,13 @@ Feature: A user can update his profile infos
 
 Background: User can update his profile information
 Given the following users exist:
-	|id| first_name | last_name | email               | password   | password_confirmation |instruc|admin|
-	| 1| Sebastian  | Delgado   | sd@gmail.com        | cs169rocks | cs169rocks            |false  |false|
+  |id| first_name | last_name | email               | password   | password_confirmation |instruc|admin|status|
+  | 1| Sebastian  | Delgado   | sd@gmail.com        | cs169rocks | cs169rocks            |false  |false|approved|
 
-	|2 | Ryan       | Wilson    | hotmale@hotmail.com | ilovebacon | ilovebacon            |false  |false|
-        |3 |Aime	| Ngongang  | aime@ngongang.com   | blabla     |blabla                 |true   |false|
-        |4 |Alex	|Hu	    |alex@hu.com	  |blabla      |blabla		       |true   |false|
-        |5 |admin	|man	    |admin@man.com	  |adminman    |adminman               |false  |true |
+  |2 | Ryan       | Wilson    | hotmale@hotmail.com | ilovebacon | ilovebacon            |false  |false|approved|
+  |3 |Aime	| Ngongang  | aime@ngongang.com   | blabla     |blabla                 |true   |false|approved|
+  |4 |Alex	|Hu	    |alex@hu.com	  |blabla      |blabla		       |true   |false|approved|
+  |5 |admin	|man	    |admin@man.com	  |adminman    |adminman               |false  |true |approved|
 
 
 Scenario: Update user profile info
@@ -34,7 +34,7 @@ Scenario: Invalid update
     And I fill "user_last_name" with "Sebastian"
     And I fill "user_email" with "sd@gmail.com"
     And I fill "user_password" with "cs169"
-    And I fill "user_password_confirmation" with "cs169"
+    And I fill "user_password_confirmation" with ""
     And I press "Save changes"
     Then I should see "Invalid update informations"
     
