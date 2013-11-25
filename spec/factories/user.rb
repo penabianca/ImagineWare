@@ -5,6 +5,7 @@ FactoryGirl.define do
     email    "aime@ngongang.com"
     password "penabianca"
     password_confirmation "penabianca"
+    status "approved"
     trait :admin do
       admin true
     end

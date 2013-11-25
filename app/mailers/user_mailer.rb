@@ -1,3 +1,4 @@
+=begin
 class UserMailer < ActionMailer::Base
   default to: Proc.new{User.where('admin'=> true ).pluck(:email)},
          from: 'imaginewarecs169group19@gmail.com'
@@ -17,3 +18,4 @@ class UserMailer < ActionMailer::Base
     mail( to: @user.email, subject: 'Your Assignment has been graded')
   end
 end
+=end
