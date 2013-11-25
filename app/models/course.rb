@@ -12,5 +12,4 @@ class Course < ActiveRecord::Base
     @rendered_body = redcarpet.render self.content
     return @rendered_body
   end
-
 end
