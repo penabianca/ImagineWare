@@ -8,6 +8,7 @@ gem 'turbolinks'
 gem 'acts-as-taggable-on'
 # use Ruby debugger
 gem 'simple_form'
+gem 'redcarpet'
 group :development , :test do
   #gem 'ruby-debug19'
   gem 'sqlite3'
