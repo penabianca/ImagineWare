@@ -8,7 +8,7 @@
     = @course.created_at.strftime("%B %d,%Y")
 
 %h3 Content:
-%p#description= @course.content
+%div#description!= @course.render_content
 -if current_user and not current_user.admin and not current_user.instruc
   = button_to 'submit assignment', submit_path(@course)
   = link_to 'Back to course list',courses_path 
