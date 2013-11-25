@@ -11,7 +11,8 @@ class Submission < ActiveRecord::Base
   def self.student_submissions(id)
     Submission.where('user_id' =>id.to_i)
   end
-
+end
+=begin
   def self.save(upload)
     name =  upload['datafile'].original_filename
     directory = "upload/public"
@@ -25,4 +26,4 @@ class Submission < ActiveRecord::Base
 end
 
   end
-end
+=end
