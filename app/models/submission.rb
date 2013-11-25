@@ -14,11 +14,15 @@ class Submission < ActiveRecord::Base
 
   def self.save(upload)
     name =  upload['datafile'].original_filename
-    directory = "upload/public/data"
+    directory = "upload/public"
     #directory = Rails.root.join("upload","public","data");
     # create the file path
-    path = File.join(directory, name)
+    #path = File.join(directory, name)
     # write the file
-    File.open(path, "wb") { |f| f.write(upload['datafile'].read) }
+    #File.open(path, "wb") { |f| f.write(upload['datafile'].read) }
+    File.open(Rails.root.join('public', 'upload', name), 'w') do |file|
+      file.write(upload['datafile'].read)
+end
+
   end
 end
