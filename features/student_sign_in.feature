@@ -6,8 +6,8 @@ Feature: Student account in the ImagineWare course platform
   
   Background:
     	Given the following users exist:
-	| first_name | last_name | email               | password   |
-	| Ryan       | Wilson    | hotmale@hotmail.com | ilovebacon |
+	| first_name | last_name | email               | password   |status|
+	| Ryan       | Wilson    | hotmale@hotmail.com | ilovebacon |approved|
 
   Given I am on the home page
 
