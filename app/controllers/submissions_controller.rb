@@ -17,10 +17,12 @@ class SubmissionsController < ApplicationController
   end
   def new
   end
+=begin
   def uploadFile
     post = Submission.save(params[:upload])
     render :text => "File has been uploaded successfully"
   end
+=end
   def submit
     @submission = Submission.new_submission
     @submission.user_id = session[:current_user]
@@ -39,7 +41,7 @@ class SubmissionsController < ApplicationController
     @submission = Submission.find params[:id]
     @submission.grader_id = session[:current_user].to_i
     @submission.update_attributes!(params[:submission])
-    UserMailer.assignment_graded(@submission).deliver
+    #UserMailer.assignment_graded(@submission).deliver
     flash[:success] = "#{User.find(@submission.user_id).first_name}'s submission for #{Course.find(@submission.course_id).title} has been graded"
     redirect_to students_path
   end

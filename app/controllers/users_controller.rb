@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :signed_in_user , only: [:index,:edit,:update]
   before_filter :correct_user, only: [:edit, :update]
-  before_filter :admin_user, only: [:destroy,:update]
+  before_filter :admin_user, only: [:destroy]
   def show
     @user = User.find(params[:id]) # look up user by unique ID
   end
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     @user.status = "approved"
     @user.instruc = true
     if @user.save
-      UserMailer.welcome_instructor(@user).deliver
+      #UserMailer.welcome_instructor(@user).deliver
       flash.now[:success] = "Thanks for approving Mr #{@user.first_name} #{@user.last_name} as an instructor!"
 
     else
@@ -40,14 +40,18 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.password.blank? or @user.password.length <6
       flash[:error] =". Password should be at least six characters long"
-      redirect_to signup_instructor_path
+      #redirect_to signup_instructor_path
     elsif @user.password_confirmation.blank? or @user.password_confirmation.length <6
       flash[:error] = ". Password confirmation should be at least six characters long"
-      redirect_to signup_instructor_path
+      #redirect_to signup_iinstructor_path
     else
       @user.status = "pending"
       if @user.save
-        UserMailer.verify_instructor(@user).deliver
+        #UserMailer.verify_instructor(@user).deliver
+        flash.now[:success]= "Your request was sent to the administrator"
+      else
+        flash.now[:error] = "You did not enter all the fields correctly"
+        #redirect_to signup_instructor_path
       end
     end
   end
@@ -84,8 +88,9 @@ class UsersController < ApplicationController
   end
 
   def update
+    
     if @user.update_attributes(user_params)
-      flash[:sucess] ="Profile updated"
+      flash[:success] ="Profile updated"
       redirect_to @user
     else
       flash[:error] = "Invalid update informations"
