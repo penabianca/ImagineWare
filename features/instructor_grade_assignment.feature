@@ -3,11 +3,11 @@ Feature: Instructor can grade an submission
   so that I can change a student's grade
 Background: users , courses and submissions have been added to the database
  Given the following users exist:
-	|id| first_name | last_name | email               | password   | password_confirmation |instruc|
-	| 1| Sebastian  | Delgado   | sd@gmail.com        | cs169rocks | cs169rocks            |false  |
+	|id| first_name | last_name | email               | password   | password_confirmation |instruc|status|
+	| 1| Sebastian  | Delgado   | sd@gmail.com        | cs169rocks | cs169rocks            |false  |approved|
 
-	|2 | Ryan       | Wilson    | hotmale@hotmail.com | ilovebacon | ilovebacon            |false  |
-        |3 |Aime	| Ngongang  | aime@ngongang.com   | blabla     |blabla                 |true   |
+	|2 | Ryan       | Wilson    | hotmale@hotmail.com | ilovebacon | ilovebacon            |false  |approved|
+        |3 |Aime	| Ngongang  | aime@ngongang.com   | blabla     |blabla                 |true   |approved|
 
 
  Given the following courses exist:
@@ -47,7 +47,7 @@ Scenario: An instructor can grade an assignment
   When I follow "Intro to computer science"
   Then I should see "grade assignment"
   When I follow "grade assignment"
-  When I fill "Grade" with "B"
+  When I select "B" from "Grade"
   When I fill "Feedback" with "good job"
   Then I press "Submit grade"
   Then I should see "Ryan's submission for Intro to computer science has been graded"
