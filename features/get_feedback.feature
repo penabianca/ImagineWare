@@ -13,10 +13,10 @@ Background:
 	| Object Oriented Programming | intermediate,coding | Here you must build classes with inheretance in Java           |
 
 	Given the following users exist:
-	|id| first_name | last_name | email               | password   | password_confirmation |instruc|
-	|1 | Sebastian  | Delgado   | sd@gmail.com        | cs169rocks | cs169rocks            |false  |
-	|2 | Ryan       | Wilson    | hotmale@hotmail.com | ilovebacon | ilovebacon            |false  |
-        |3 | Aime	| Ngongang  | aime@ngongang.com   | blabla     |blabla                 |true   |
+	|id| first_name | last_name | email               | password   | password_confirmation |instruc|status|
+	|1 | Sebastian  | Delgado   | sd@gmail.com        | cs169rocks | cs169rocks            |false  |approved|
+	|2 | Ryan       | Wilson    | hotmale@hotmail.com | ilovebacon | ilovebacon            |false  |approved|
+        |3 | Aime	| Ngongang  | aime@ngongang.com   | blabla     |blabla                 |true   |approved|
 	
 
 
@@ -43,7 +43,7 @@ Scenario: make a submission and get feedback
 	When I follow "Introduction to HTML5"
 	Then I should see "grade assignment"
 	When I follow "grade assignment"
-	When I fill "Grade" with "B"
+	When I select "B" from "Grade"
 	When I fill "Feedback" with "Awesome stuff!"
 	Then I press "Submit grade"
 	Then I should see "Sebastian's submission for Introduction to HTML5 has been graded"
