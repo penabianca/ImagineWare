@@ -15,6 +15,6 @@
 /tmp
 *~
 *.swp
-
+*.pasta
 # Ignore coverage output
 /coverage
