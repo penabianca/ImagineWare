@@ -5,5 +5,5 @@
     %li
       //= gravatar_for student
       #{instructor.first_name} #{instructor.last_name}
-      | #{link_to "delete", instructor, method: :delete, data: {confirm: "You sure?"}}
+      | #{link_to "delete", instructor, method: :delete}
 = will_paginate @instructors
