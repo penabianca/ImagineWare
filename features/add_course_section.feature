@@ -6,8 +6,8 @@ Feature: Add a course with a subsection
 
 Background: There are courses in the databse and the user is logged in
   Given the following users exist:
-	|id| first_name | last_name | email               | password   | password_confirmation |instruc|status|
-	| 1| Sebastian  | Delgado   | sd@gmail.com        | cs169rocks | cs169rocks            |true   |approved|
+    |id| first_name | last_name | email               | password   | password_confirmation |instruc|status|
+    | 1| Sebastian  | Delgado   | sd@gmail.com        | cs169rocks | cs169rocks            |true   |approved|
 
 	Given the following courses exist:
 	| title                       | tags  | content |
