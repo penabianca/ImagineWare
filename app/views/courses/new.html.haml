@@ -2,8 +2,8 @@
 .row
   .span6.offset3
     = simple_form_for :course, :url => {:action => :create } do |f|
-      = f.label :Course_Title
-      = f.text_field :title
-      = f.label :Content
-      = f.text_area :content
-      = f.submit "Create course", class: "btn btn-large btn-primary"
+      %p= f.label :Course_Title
+      %p= f.text_field :title
+      %p= f.label :Content
+      %p= f.text_area :content
+      %p= f.submit "Create course", class: "btn btn-large btn-primary"

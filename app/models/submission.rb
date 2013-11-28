@@ -11,7 +11,7 @@ class Submission < ActiveRecord::Base
   def self.student_submissions(id)
     Submission.where('user_id' =>id.to_i)
   end
-end
+
 =begin
   def self.save(upload)
     name =  upload['datafile'].original_filename
@@ -23,7 +23,8 @@ end
     #File.open(path, "wb") { |f| f.write(upload['datafile'].read) }
     File.open(Rails.root.join('public', 'upload', name), 'w') do |file|
       file.write(upload['datafile'].read)
-end
-
+    end
   end
 =end
+end
+

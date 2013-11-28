@@ -19,6 +19,7 @@ HospitalLink::Application.routes.draw do
   match '/contact', to: 'static_pages#contact' , via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
   resources :courses
+  resources :attachments
   get 'tags/:tag', to: 'courses#index', as: :tag
   match '/signup/instructors', to: 'users#new_instructors', via: 'get'
   match '/create/instructors', to: 'users#create_instructors', via: 'post'
