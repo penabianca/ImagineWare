@@ -10,7 +10,7 @@
 %h3 Content:
 %div#description!= @course.render_content
 -if current_user and not current_user.admin and not current_user.instruc
-  = button_to 'submit assignment', submit_path(@course)
+  = button_to 'submit assignment', submit_path(@course), class: "btn btn-medium btn-primary"
   = link_to 'Back to course list',courses_path 
 -else
   = link_to "Edit #{@course.title}", '#'
