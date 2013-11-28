@@ -57,7 +57,7 @@ p {
 /* header */
 
 #logo {
-  float: left;
+  display:inline-block;
   margin-right: 10px;
   font-size: 1.7em;
   color: white;
@@ -86,13 +86,13 @@ footer {
     }
   }
   small {
-    float: left;
+    display:inline-block;
   }
   ul {
     float: right;
     list-style: none;
     li {
-      float: left;
+      display:inline-block;
       margin-left: 10px;
     }
   }
@@ -106,7 +106,7 @@ footer {
 
 .debug_dump {
   clear: both;
-  float: left;
+  display:inline-block;
   width: 100%;
   margin-top: 45px;
   @include box_sizing;
@@ -137,7 +137,7 @@ aside {
 }
 
 .gravatar {
-  float: left;
+  display:inline-block;
   margin-right: 10px;
 }
 /* Users index */

@@ -19,7 +19,7 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.create!(params[:course])
-    flash[:notice] = "#{@course.title} was successfully created."
+    flash[:success] = "#{@course.title} was successfully created."
     redirect_to courses_path
   end
   

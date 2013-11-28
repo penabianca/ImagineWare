@@ -1,11 +1,10 @@
-%h2 Edit Submission
+%h2 Grade Assignment
 
 =form_tag submission_path(@submission), :method => :put do
 
-  =label :submission, :grade, 'Grade'
-  = select  :submission, :grade, Course.all_grades
+  %p=label :submission, :grade, 'Grade'
+  %p= select  :submission, :grade, Course.all_grades
 
-  =label :submission, :feedback, 'Feedback'
-  =text_area :submission, 'feedback'
-
-  =submit_tag 'Submit grade'
+  %p=label :submission, :feedback, 'Feedback'
+  %p=text_area :submission,'feedback', :rows => 5, :class => "span3", :placeholder => 'Enter text.'
+  %p=submit_tag 'Submit grade', class: "btn btn-medium btn-primary"

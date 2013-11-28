@@ -1,5 +1,5 @@
 - 
-%h2 Your submission for #{Course.find(@submission.course_id).title}
+%h2 #{User.find(@submission.user_id).first_name} #{User.find(@submission.user_id).last_name} assignment for #{Course.find(@submission.course_id).title}
 %ul#details
   %li
     Date Submitted:

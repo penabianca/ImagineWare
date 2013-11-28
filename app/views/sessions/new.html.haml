@@ -3,8 +3,8 @@
 .row
   .span6.offset3
     = form_for(:session, url: sessions_path) do |f|
-      = f.label :email
-      = f.text_field :email
-      = f.label :password
-      = f.password_field :password
-      = f.submit "Sign in", class: "btn btn-large btn-primary"
+      %p= f.label :email
+      %p= f.text_field :email
+      %p= f.label :password
+      %p= f.password_field :password
+      %p= f.submit "Sign in", class: "btn btn-large btn-primary"
