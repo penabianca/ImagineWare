@@ -10,7 +10,7 @@
 %h3 Content:
 %div#description!= @course.render_content
 -if current_user and not current_user.admin and not current_user.instruc
-  = form_tag({:controller => :attachments, :action => :create}, {:multipart => true, :method => :post, :html => { :class => "form-horizontal"}}) do
+  = form_tag({:controller => :submissions, :action => :upload}, {:multipart => true, :method => :post, :html => { :class => "form-horizontal"}}) do
     -#%fieldset
     -#%legend Data
     -#%ol.field-list

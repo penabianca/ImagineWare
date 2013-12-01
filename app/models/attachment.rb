@@ -1,5 +1,5 @@
 class Attachment < ActiveRecord::Base
-  # attr_accessible :title, :body
+  belongs_to :submission
   def uploaded_file=(incoming_file)
     self.filename = incoming_file.original_filename
     self.content_type = incoming_file.content_type

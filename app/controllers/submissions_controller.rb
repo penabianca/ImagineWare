@@ -17,12 +17,20 @@ class SubmissionsController < ApplicationController
   end
   def new
   end
-=begin
-  def uploadFile
-    post = Submission.save(params[:upload])
-    render :text => "File has been uploaded successfully"
+  def upload
+    return if params[:attachment].blank?
+
+    @attachment = Attachment.new
+    @attachment.uploaded_file = params[:attachment]
+
+    if @attachment.save
+      flash[:notice] = "Your file was successfully attached please press on submit assignment..."
+      redirect_to  :back
+    else
+      flash[:error] = "There was a problem submitting your attachment."
+      redirect_to upload_path
+    end
   end
-=end
   def submit
     @submission = Submission.new_submission
     @submission.user_id = session[:current_user]
@@ -31,7 +39,7 @@ class SubmissionsController < ApplicationController
       flash.now[:success] = "Your submission for #{Course.find(@submission.course_id).title} was successful"
       flash.keep
     end
-    redirect_to course_path(@submission.course_id)
+    redirect_to student_submissions_path(session[:current_user])
   end
 
   def edit

@@ -9,7 +9,7 @@ HospitalLink::Application.routes.draw do
   resources :attachments
   
   post '/submit/:course', to: 'submissions#submit', as: :submit
-  post '/upload', to: 'submissions#uploadFile' , as: :upload
+  post '/upload', to: 'submissions#upload' , as: :upload
   
   get '/instructors/request/accept/:id', to: 'users#accept' , as: :accept_request
   get '/instructors/requests', to: 'users#requests', as: :request
