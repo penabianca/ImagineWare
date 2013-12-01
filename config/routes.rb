@@ -10,7 +10,7 @@ HospitalLink::Application.routes.draw do
   
   post '/submit/:course', to: 'submissions#submit', as: :submit
   post '/upload', to: 'submissions#upload' , as: :upload
-  
+  get  '/download', to: 'submissions#download' , as: :download
   get '/instructors/request/accept/:id', to: 'users#accept' , as: :accept_request
   get '/instructors/requests', to: 'users#requests', as: :request
   get 'submissions/grades/pending' ,to: 'submissions#assignments_to_grade', as: :assign_to_grade

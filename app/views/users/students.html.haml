@@ -8,3 +8,4 @@
       -if current_user and current_user.admin
         | #{link_to "delete", student, method: :delete, data: {confirm: "You Sure"}}
 = will_paginate @students
+

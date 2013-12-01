@@ -32,6 +32,7 @@ class SubmissionsController < ApplicationController
       redirect_to upload_path
     end
   end
+  
   def submit
     @submission = Submission.new_submission
     @submission.attachment_id = session[:file_id]
@@ -46,6 +47,12 @@ class SubmissionsController < ApplicationController
 
   def edit
     @submission = Submission.find params[:id]
+    session[:file_id] = @submission.attachment_id
+  end
+  def download
+    
+    @attachment = Attachment.find(session[:file_id])
+    send_data @attachment.data, :filename => @attachment.filename, :type => @attachment.content_type 
   end
   def update
     @submission = Submission.find params[:id]
