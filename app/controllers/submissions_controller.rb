@@ -26,6 +26,7 @@ class SubmissionsController < ApplicationController
     if @attachment.save
       flash[:notice] = "Your file was successfully attached please press on submit assignment..."
       redirect_to  :back
+      session[:file_id] = @attachment.id
     else
       flash[:error] = "There was a problem submitting your attachment."
       redirect_to upload_path
@@ -33,6 +34,7 @@ class SubmissionsController < ApplicationController
   end
   def submit
     @submission = Submission.new_submission
+    @submission.attachment_id = session[:file_id]
     @submission.user_id = session[:current_user]
     @submission.course_id = session[:course]
     if @submission.save

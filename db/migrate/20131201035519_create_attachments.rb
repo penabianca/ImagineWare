@@ -4,6 +4,7 @@ class CreateAttachments < ActiveRecord::Migration
       t.string 'filename'
       t.string 'content_type'
       t.binary 'data'
+      t.references 'submission'
       t.timestamps
     end
   end
