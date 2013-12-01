@@ -11,25 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131128091018) do
+ActiveRecord::Schema.define(:version => 20131201035519) do
 
   create_table "attachments", :force => true do |t|
     t.string   "filename"
-    t.string   "type"
-    t.text     "data"
-    t.datetime "attachment_date"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.string   "content_type"
+    t.binary   "data"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "courses", :force => true do |t|
     t.string   "title"
     t.string   "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "data_files", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

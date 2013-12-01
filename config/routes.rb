@@ -1,16 +1,22 @@
 HospitalLink::Application.routes.draw do
+  
+
   root  to: 'static_pages#home', via: 'get'
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
   resources :submissions
+  resources :courses
+  resources :attachments
+  
   post '/submit/:course', to: 'submissions#submit', as: :submit
   post '/upload', to: 'submissions#uploadFile' , as: :upload
-  match '/students', to: 'users#students', via: 'get'
+  
   get '/instructors/request/accept/:id', to: 'users#accept' , as: :accept_request
   get '/instructors/requests', to: 'users#requests', as: :request
   get 'submissions/grades/pending' ,to: 'submissions#assignments_to_grade', as: :assign_to_grade
   get '/student/grades/:id', to: 'submissions#my_grades', as: :my_grades
   get '/students/submissions/:id', to: 'submissions#student', as: :student_submissions
+  get 'tags/:tag', to: 'courses#index', as: :tag
   match '/instructors', to: 'users#instructors', via: 'get'
   match '/signin',  to: 'sessions#new', via: 'get'
   match '/signup/students', to: 'users#new' , via: 'get'
@@ -18,11 +24,9 @@ HospitalLink::Application.routes.draw do
   match '/about', to:   'static_pages#about', via: 'get'
   match '/contact', to: 'static_pages#contact' , via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
-  resources :courses
-  resources :attachments
-  get 'tags/:tag', to: 'courses#index', as: :tag
   match '/signup/instructors', to: 'users#new_instructors', via: 'get'
   match '/create/instructors', to: 'users#create_instructors', via: 'post'
+  match '/students', to: 'users#students', via: 'get'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
