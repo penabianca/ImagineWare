@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     @user.status = "approved"
     @user.instruc = true
     if @user.save
-      #UserMailer.welcome_instructor(@user).deliver
+      UserMailer.welcome_instructor(@user).deliver
       flash.now[:success] = "Thanks for approving Mr #{@user.first_name} #{@user.last_name} as an instructor!"
 
     else
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
     else
       @user.status = "pending"
       if @user.save
-        #UserMailer.verify_instructor(@user).deliver
+        UserMailer.verify_instructor(@user).deliver
         flash.now[:success]= "Your request was sent to the administrator"
       else
         flash.now[:error] = "You did not enter all the fields correctly"
@@ -79,7 +79,8 @@ class UsersController < ApplicationController
   end
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
+    User.destroy_all(:id => params[:id.to_s])
+    #@user.destroy
     flash.now[:notice] = "User '#{@user.first_name}' deleted."
     redirect_to instructors_path
   end
