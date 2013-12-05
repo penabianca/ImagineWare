@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :submissions, :dependent => :destroy
   ActiveModel::ForbiddenAttributesProtection
   before_create :create_remember_token
   before_save { self.email = email.downcase }
