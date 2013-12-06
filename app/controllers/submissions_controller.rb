@@ -1,10 +1,11 @@
 class SubmissionsController < ApplicationController
   def my_grades
-    @my_sub = Submission.where(:user_id => session[:current_user])
+    @my_sub = Submission.my_grades(session[:current_user])
   end
   def tutorials_completed
     @completed = Submission.tutorials_completed(session[:current_user],Course.all_grades)
   end
+
 
   def assignments_to_grade
     @to_grade = Submission.non_graded_assignments

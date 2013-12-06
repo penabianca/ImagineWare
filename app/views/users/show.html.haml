@@ -6,6 +6,9 @@
       =[@user.first_name, @user.last_name].reject(&:empty?).join(' ')
       -if current_user.instruc == false and current_user.admin == false
         %h6
-          %p Total points 
-          %p Current credit
+        .content
+          %p Total reward:#{Submission.where(:user_id => session[:current_user]).sum(:points)}
+            
+          %p
+            Current credit:
 
