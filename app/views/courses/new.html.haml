@@ -4,6 +4,8 @@
     = simple_form_for :course, :url => {:action => :create } do |f|
       %p= f.label :Course_Title
       %p= f.text_field :title
+      %p= f.label :Points
+      %p= f.text_field :points
       %p= f.label :Content
       %p= f.text_area :content
       %p= f.submit "Create course", class: "btn btn-large btn-primary"

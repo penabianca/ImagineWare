@@ -11,14 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131201095949) do
+ActiveRecord::Schema.define(:version => 20131206011930) do
 
   create_table "attachments", :force => true do |t|
     t.string   "filename"
     t.string   "content_type"
     t.binary   "data"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer  "submission_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "courses", :force => true do |t|
@@ -26,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20131201095949) do
     t.string   "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "points"
   end
 
   create_table "hospitals", :force => true do |t|
@@ -46,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20131201095949) do
     t.integer  "course_id"
     t.integer  "user_id"
     t.integer  "attachment_id"
+    t.integer  "points"
   end
 
   create_table "taggings", :force => true do |t|

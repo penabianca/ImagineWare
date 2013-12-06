@@ -57,6 +57,9 @@ class SubmissionsController < ApplicationController
   def update
     @submission = Submission.find params[:id]
     @submission.grader_id = session[:current_user].to_i
+    if params[:submission][:grade] != "F"
+      @submission.points = Course.find(@submission.course_id).points
+    end
     @submission.update_attributes!(params[:submission])
     UserMailer.assignment_graded(@submission).deliver
     flash[:success] = "#{User.find(@submission.user_id).first_name}'s submission for #{Course.find(@submission.course_id).title} has been graded"
