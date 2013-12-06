@@ -1,8 +1,11 @@
 class SubmissionsController < ApplicationController
-
   def my_grades
-    @my_sub = Submission.where('user_id' => session[:current_user])
+    @my_sub = Submission.where(:user_id => session[:current_user])
   end
+  def tutorials_completed
+    @completed = Submission.tutorials_completed(session[:current_user],Course.all_grades)
+  end
+
   def assignments_to_grade
     @to_grade = Submission.non_graded_assignments
   end
@@ -54,11 +57,14 @@ class SubmissionsController < ApplicationController
     @attachment = Attachment.find(session[:file_id])
     send_data @attachment.data, :filename => @attachment.filename, :type => @attachment.content_type 
   end
+
   def update
     @submission = Submission.find params[:id]
     @submission.grader_id = session[:current_user].to_i
     if params[:submission][:grade] != "F"
       @submission.points = Course.find(@submission.course_id).points
+    else
+      @submission.points = 0
     end
     @submission.update_attributes!(params[:submission])
     UserMailer.assignment_graded(@submission).deliver

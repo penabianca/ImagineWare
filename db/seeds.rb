@@ -27,15 +27,15 @@ list = ['web', 'android','ruby', 'beginner', 'intermediate', 'advanced']
 list.each do |tag|
   ActsAsTaggableOn::Tag.new(:name => tag).save
 end
-@a = Course.create(:title => "Introduction to HTML5", :content => "Javascript without the javascript")
+@a = Course.create!(:title => "Introduction to HTML5",:points => 5, :content => "Javascript without the javascript")
 @a.tag_list.add('web')
 @a.tag_list.add('beginner')
 @a.save
-@b = Course.create(:title => "Android Programming", :content => "One million devices and a lot of bad software")
+@b = Course.create!(:title => "Android Programming", :points => 5,:content => "One million devices and a lot of bad software")
 @b.tag_list.add('android')
 @b.tag_list.add('advanced')
 @b.save
-@c = Course.create(:title => "Ruby on Rails", :content => "DHH smells of axe body spray")
+@c = Course.create!(:title => "Ruby on Rails",:points => 5, :content => "DHH smells of axe body spray")
 @c.tag_list.add('beginner')
 @c.tag_list.add('ruby')
 @c.save

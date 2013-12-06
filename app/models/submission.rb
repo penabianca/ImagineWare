@@ -6,6 +6,9 @@ class Submission < ActiveRecord::Base
   def self.new_submission
     new { |u| u.feedback = "student's submission", u.grade = "Pending"}
   end
+  def self.tutorials_completed(id,arr)
+    Submission.where(user_id: id, grade: arr)
+  end
   def self.non_graded_assignments
     Submission.where(:grade => 'Pending')
   end

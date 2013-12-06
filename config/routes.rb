@@ -17,6 +17,7 @@ HospitalLink::Application.routes.draw do
   get '/student/grades/:id', to: 'submissions#my_grades', as: :my_grades
   get '/students/submissions/:id', to: 'submissions#student', as: :student_submissions
   get 'tags/:tag', to: 'courses#index', as: :tag
+  get 'students/rewards/:id' , to: 'submissions#tutorials_completed', as: :rewards
   match '/instructors', to: 'users#instructors', via: 'get'
   match '/signin',  to: 'sessions#new', via: 'get'
   match '/signup/students', to: 'users#new' , via: 'get'
