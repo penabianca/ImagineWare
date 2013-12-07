@@ -6,6 +6,6 @@
       %p= f.text_field :title
       %p= f.label :Points
       %p= f.text_field :points
-      %p= f.label :Content
-      %p= f.text_area :content
+      %p= f.label :Description
+      %p= f.text_area :content, :rows => 5, :class => "span3", :placeholder => "Enter text"
       %p= f.submit "Create course", class: "btn btn-large btn-primary"

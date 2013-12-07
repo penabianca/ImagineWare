@@ -93,6 +93,7 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
+    jw_player_helper (0.0.1)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -205,6 +206,7 @@ DEPENDENCIES
   faker (= 1.1.2)
   haml
   jquery-rails
+  jw_player_helper
   pg
   rails (= 3.2.8)
   rails_12factor

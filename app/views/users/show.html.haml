@@ -10,5 +10,5 @@
           %p Total reward:#{Submission.where(:user_id => session[:current_user]).sum(:points)}
             
           %p
-            Current credit:
+            Current credit:#{User.find(session[:current_user]).credit}
 

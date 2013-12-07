@@ -7,7 +7,7 @@ HospitalLink::Application.routes.draw do
   resources :submissions
   resources :courses
   resources :attachments
-  
+  put '/admin/credit/student/:id', to: 'users#credit_account', as: :credit_student
   post '/submit/:course', to: 'submissions#submit', as: :submit
   post '/upload', to: 'submissions#upload' , as: :upload
   get  '/download', to: 'submissions#download' , as: :download
@@ -16,6 +16,7 @@ HospitalLink::Application.routes.draw do
   get 'submissions/grades/pending' ,to: 'submissions#assignments_to_grade', as: :assign_to_grade
   get '/student/grades/:id', to: 'submissions#my_grades', as: :my_grades
   get '/students/submissions/:id', to: 'submissions#student', as: :student_submissions
+  get '/students/points/:id', to: 'submissions#student_rewards', as: :student_rewards
   get 'tags/:tag', to: 'courses#index', as: :tag
   get 'students/rewards/:id' , to: 'submissions#tutorials_completed', as: :rewards
   match '/instructors', to: 'users#instructors', via: 'get'

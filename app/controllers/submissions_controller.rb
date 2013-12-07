@@ -15,6 +15,13 @@ class SubmissionsController < ApplicationController
   end
   def student
     @student_submissions = Submission.student_submissions(params[:id])
+    @id = params[:id]
+  end
+  def student_rewards
+    @stud_rewa = Submission.tutorials_completed(params[:id],Course.all_grades)
+
+    session[:student_to_credit] = params[:id]
+    @student_reward = Submission.where(:user_id => params[:id]).sum(:points)
   end
   def index
     @submissions = Submission.all
@@ -70,7 +77,7 @@ class SubmissionsController < ApplicationController
     @submission.update_attributes!(params[:submission])
     UserMailer.assignment_graded(@submission).deliver
     flash[:success] = "#{User.find(@submission.user_id).first_name}'s submission for #{Course.find(@submission.course_id).title} has been graded"
-    redirect_to students_path
+    redirect_to root_path
   end
 
 end

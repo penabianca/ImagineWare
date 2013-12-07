@@ -12,7 +12,14 @@ class UsersController < ApplicationController
   def students
     @students = User.students.paginate(:page => params[:page],per_page: 5)
   end
-
+  def credit_account
+    @st = User.find(session[:student_to_credit])
+    #@cre = @st.credit + params[:credit][:credit_points]
+    #@cre = @st.credit + @param
+    #@st.credit += @param
+    #@st.save
+    @param = params[:credit][:credit_points].to_i
+  end
   def instructors
     @instructors = User.instructors.paginate(:page => params[:page],per_page: 5)
   end

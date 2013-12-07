@@ -10,6 +10,7 @@ html {
   overflow-y: scroll;
 }
 
+
 body {
   padding-top: 60px;
 }
@@ -53,6 +54,14 @@ h2 {
 p {
   font-size: 1.1em;
   line-height: 1.7em;
+}
+
+#menu
+{
+float: left;
+background-color:red;
+height:200px;
+width:100px;
 }
 /* header */
 
