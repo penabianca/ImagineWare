@@ -16,9 +16,14 @@
         
     %tbody
       - @courses.each do |course|
-        %tr
-          %td= link_to image_tag("rails.png"), "#"
-          %td= link_to "#{course.title}", course_path(course)
+        -if course =~ /^(.*)python(.*)$/i
+          %tr
+            %td= link_to image_tag("python.png"), "#"
+            %td= link_to "#course.title}", course_path(course)
+        -else 
+          %tr
+            %td= link_to image_tag("rails.png"), "#"
+            %td= link_to "#{course.title}", course_path(course)
           -#%td= "#{course.content}"
           
 -# add to end of index.html.haml
