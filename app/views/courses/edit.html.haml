@@ -5,7 +5,10 @@
 = form_tag course_path(@course), :method => :put do
 
   = label :course, :title, 'Title'
-  = text_field :movie, 'title'
+  = text_field :course, 'title'
+
+  = label :course, :tags, 'tags'
+  = text_field :course, 'tags'
 
   = label :course, :content, 'Content'
   = text_field :course, 'content'
