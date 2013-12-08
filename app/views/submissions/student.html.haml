@@ -1,7 +1,7 @@
 -if current_user.admin? or current_user.instruc?
  %h6
  .content
-  %p= link_to "Student's reward", student_rewards_path(@id)
+  %p= link_to "Student's reward : #{Submission.where(:user_id =>@id).sum(:points)}", student_rewards_path(@id)
   %p Student's current credit :
 -if current_user.admin?
  %h6
