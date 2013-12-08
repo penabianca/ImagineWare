@@ -1,23 +1,6 @@
 
 %center
-  %h3  #{@course.title}
-  %div#description!= @course.render_content
-  %body
-    %b Contents
-    %p
-      %a{href: "#S1"} Section 1.
-    %p
-      %a{href: "#S2"} Section 2.
-    %h2 
-      %a#S1 section 1
-    %p This section is about the introduction 
-    %h2
-      %a#S2 Section 2
-    %p This section is the advanced part of this tutorial
-    %video{:controls => "controls", :height => "240", :width => "320"}
-      %source{:src => "#{Rails.root}/public/videos/try.flv"}/
-      Your browser does not support the video tag.
-   
+  %div#description!= @course.render_content 
   -if current_user and not current_user.admin and not current_user.instruc
     = form_tag({:controller => :submissions, :action => :upload}, {:multipart => true, :method => :post, :html => { :class => "form-horizontal"}}) do
       = file_field_tag 'attachment'
@@ -27,5 +10,5 @@
     = link_to 'Back to course list',courses_path
  
 -if current_user and current_user.instruc
-  %p= link_to "Edit #{@course.title}", '#'
+  %p= link_to "Edit #{@course.title}", edit_course_path(@course)
   %p= link_to 'Back to course list',courses_path   
