@@ -32,6 +32,10 @@
           %tr
             %td= link_to image_tag("rails.png"), "#"
             %td= link_to "#{course.title}", course_path(course)
+        -else 
+          %tr
+            %td= link_to image_tag("rails.png"), "#"
+            %td= link_to "#{course.title}", course_path(course)
           -#%td= "#{course.content}"
           
 -# add to end of index.html.haml
