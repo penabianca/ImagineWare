@@ -6,7 +6,6 @@ class CoursesController < ApplicationController
     else
       @courses = Course.all
     end
-    #render :file => 'app\views\courses\show.html.haml'
   end
 
   def show

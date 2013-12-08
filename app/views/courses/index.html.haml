@@ -16,11 +16,19 @@
         
     %tbody
       - @courses.each do |course|
-        -if course =~ /^(.*)python(.*)$/i
+        -if course.title.downcase.include? "python"
           %tr
-            %td= link_to image_tag("python.png"), "#"
-            %td= link_to "#course.title}", course_path(course)
-        -else 
+            %td= link_to image_tag("python.gif"), "#"
+            %td= link_to "#{course.title}", course_path(course)
+        -elsif course.title.downcase.include? "android"
+          %tr
+            %td= link_to image_tag("android.png"), "#"
+            %td= link_to "#{course.title}", course_path(course)
+        -elsif course.title.downcase.include? "html5"
+          %tr
+            %td= link_to image_tag("html5.jpg"), "#"
+            %td= link_to "#{course.title}", course_path(course)
+        -elsif  course.title.downcase.include? "rails"
           %tr
             %td= link_to image_tag("rails.png"), "#"
             %td= link_to "#{course.title}", course_path(course)

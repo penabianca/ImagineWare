@@ -16,11 +16,11 @@ class SubmissionsController < ApplicationController
   def student
     @student_submissions = Submission.student_submissions(params[:id])
     @id = params[:id]
+    session[:stu] = @id
   end
   def student_rewards
     @stud_rewa = Submission.tutorials_completed(params[:id],Course.all_grades)
 
-    session[:student_to_credit] = params[:id]
     @student_reward = Submission.where(:user_id => params[:id]).sum(:points)
   end
   def index

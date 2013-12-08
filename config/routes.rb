@@ -7,7 +7,8 @@ HospitalLink::Application.routes.draw do
   resources :submissions
   resources :courses
   resources :attachments
-  put '/admin/credit/student/:id', to: 'users#credit_account', as: :credit_student
+  resources :credits
+  post '/admin/credit/student/:id', to: 'credits#add_credit', as: :credit_student
   post '/submit/:course', to: 'submissions#submit', as: :submit
   post '/upload', to: 'submissions#upload' , as: :upload
   get  '/download', to: 'submissions#download' , as: :download

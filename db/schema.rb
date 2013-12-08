@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131207024809) do
+ActiveRecord::Schema.define(:version => 20131208014459) do
 
   create_table "attachments", :force => true do |t|
     t.string   "filename"
@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(:version => 20131207024809) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "points"
+  end
+
+  create_table "credits", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "credit"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "hospitals", :force => true do |t|
@@ -80,7 +87,6 @@ ActiveRecord::Schema.define(:version => 20131207024809) do
     t.boolean  "instruc",         :default => false
     t.boolean  "admin",           :default => false
     t.string   "status",          :default => "pending"
-    t.integer  "credit",          :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
