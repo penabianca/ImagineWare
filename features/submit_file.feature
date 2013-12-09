@@ -37,5 +37,8 @@ Scenario: The user submits a file with the wrong extension (sad)
 	Given that sd@gmail.com is logged in with password cs169rocks
 	Given I am on the "Introduction to HTML5" course page
 	When I attach a ruby file
-	Then I should see "You submitted the wrong file type"
+	When I press "Upload"
+	When I press "submit assignment"
+	When I follow "Download Assignment"
+	Then I should receive the file "some_ruby_submission.rb"
 
