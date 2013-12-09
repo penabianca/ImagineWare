@@ -58,8 +58,12 @@ class SubmissionsController < ApplicationController
     @submission = Submission.find params[:id]
     @submission.grader_id = session[:current_user].to_i
     @submission.update_attributes!(params[:submission])
-    UserMailer.assignment_graded(@submission).deliver
-    flash[:success] = "#{User.find(@submission.user_id).first_name}'s submission for #{Course.find(@submission.course_id).title} has been graded"
+    begin
+      UserMailer.assignment_graded(@submission).deliver
+      flash[:success] = "#{User.find(@submission.user_id).first_name}'s submission for #{Course.find(@submission.course_id).title} has been graded"
+    rescue
+      flash[:error] = "#{User.find(@submission.user_id).first_name}'s submission for #{Course.find(@submission.course_id).title} has been graded but he/she does not have a valid email"
+    end
     redirect_to students_path
   end
 

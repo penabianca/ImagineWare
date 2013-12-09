@@ -6,6 +6,7 @@
    %th Grade
    %th Date Submitted
    %th Feedback
+   %th File Uploaded
   %tbody
    - @student_submissions.each do |submission|
     %tr
@@ -13,3 +14,4 @@
      %td= submission.grade
      %td= submission.created_at
      %td= submission.feedback
+     %td= link_to 'Download Assignment' ,download_path

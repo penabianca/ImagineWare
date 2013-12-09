@@ -23,6 +23,8 @@ module NavigationHelpers
       "/courses/#{Course.find_by_title($1).id}"
     when /^the my_grades page for "(.*)"$/
       "/student/grades/#{User.find_by_email($1).id}"
+    when /^the submissions page for "(.*)"$/
+      "/students/submissions/#{User.find_by_email($1).id}"
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

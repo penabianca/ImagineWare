@@ -29,9 +29,7 @@ Scenario: make a submission and get feedback
 	Then I should be on the "Introduction to HTML5" course page
 	When I press "submit assignment"
 	Then I should see "Your submission for Introduction to HTML5 was successful"
-	Then I should be on the "Introduction to HTML5" course page
-	When I follow "Grades"
-	Then I should be on the my_grades page for "sd@gmail.com"
+	Then I should be on the submissions page for "sd@gmail.com"
 	Then I should see "Introduction to HTML5"
 	Then I should see "Pending"
 	
@@ -46,7 +44,7 @@ Scenario: make a submission and get feedback
 	When I select "B" from "Grade"
 	When I fill "Feedback" with "Awesome stuff!"
 	Then I press "Submit grade"
-	Then I should see "Sebastian's submission for Introduction to HTML5 has been graded"
+	Then I should see "Sebastian's submission for Introduction to HTML5 has been graded but he/she does not have a valid email"
 	
 	When I follow "Sign out"
 	Given that sd@gmail.com is logged in with password cs169rocks
