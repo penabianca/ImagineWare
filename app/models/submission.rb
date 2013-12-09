@@ -1,8 +1,8 @@
 class Submission < ActiveRecord::Base
   attr_accessible :grader_id , :grade, :feedback, :user, :course, :attachment
-  belongs_to :user
-  belongs_to :course
-  has_one    :attachment,:class_name => 'Attachment', :foreign_key => 'attachment_id'
+  belongs_to :user, inverse_of: :submissions
+  belongs_to :course, inverse_of: :submissions
+  has_one    :attachment, :class_name => 'Attachment', :foreign_key => 'attachment_id'
   def self.new_submission
     new { |u| u.feedback = "student's submission", u.grade = "Pending"}
   end

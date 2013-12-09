@@ -43,7 +43,7 @@ class UsersController < ApplicationController
       #redirect_to signup_instructor_path
     elsif @user.password_confirmation.blank? or @user.password_confirmation.length <6
       flash[:error] = ". Password confirmation should be at least six characters long"
-      #redirect_to signup_iinstructor_path
+      #redirect_to signup_instructor_path
     else
       @user.status = "pending"
       if @user.save
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
       if @user.save
         sign_in @user
         flash[:success] = "Welcome to ImagineWare Online Course Platform."
-        redirect_to @user
+        redirect_to user_path(@user)
       else
         flash.now[:error] = "You did not enter all the fields correctly"
         render 'new'
@@ -92,7 +92,7 @@ class UsersController < ApplicationController
     
     if @user.update_attributes(user_params)
       flash[:success] ="Profile updated"
-      redirect_to @user
+      redirect_to user_path(@user)
     else
       flash[:error] = "Invalid update informations"
       render 'edit'
