@@ -59,10 +59,13 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.password.blank? or @user.password.length <6
       flash[:error] =". Password should be at least six characters long"
+      if @user.password_confirmation.blank?
+	flash[:error] = ". Please enter the password confirmation"
+      end
       render 'new'
-    elsif @user.password_confirmation.blank? or @user.password_confirmation.length <6
-      flash[:error] = ". Password confirmation should be at least six characters long"
-      render 'new'
+    #elsif @user.password_confirmation.blank? or @user.password_confirmation.length <6
+      #flash[:error] = ". Please enter the password confirmation"
+      #render 'new'
     else
       @user.instruc = false
       @user.status = "approved"
