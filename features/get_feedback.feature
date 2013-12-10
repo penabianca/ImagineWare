@@ -28,7 +28,7 @@ Scenario: make a submission and get feedback
         When I follow "Introduction to HTML5"
 	Then I should be on the "Introduction to HTML5" course page
 	When I press "submit assignment"
-	Then I should see "Your submission for Introduction to HTML5 was successful"
+	Then I should see "Your submission was successful"
 	Then I should be on the submissions page for "sd@gmail.com"
 	Then I should see "Introduction to HTML5"
 	Then I should see "Pending"

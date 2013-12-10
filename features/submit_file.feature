@@ -26,7 +26,7 @@ Scenario: The user uploads a file and can download it from the grades page
 	When I press "Upload"
 	Then I should see "Your file was successfully attached please press on submit assignment"
 	When I press "submit assignment"
-	Then I should see "Your submission for Introduction to HTML5 was successful"
+	Then I should see "Your submission was successful"
 	Then I should see "Introduction to HTML5"
 	Then I should see "Pending"
 	When I follow "Download Assignment"
