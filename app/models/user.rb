@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_merit
+  has_many :submissions, inverse_of: :user
+
   ActiveModel::ForbiddenAttributesProtection
   before_create :create_remember_token
   before_save { self.email = email.downcase }

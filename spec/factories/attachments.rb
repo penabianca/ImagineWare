@@ -2,5 +2,8 @@
 
 FactoryGirl.define do
   factory :attachment do
+    original_filename "Gemfile"
+    content_type "text/plain"
+    read "0101"
   end
 end

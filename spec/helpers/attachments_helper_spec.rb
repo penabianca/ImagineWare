@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+=begin
 # Specs in this file have access to a helper object that includes
 # the AttachmentsHelper. For example:
 #
@@ -13,3 +13,4 @@ require 'spec_helper'
 describe AttachmentsHelper do
   pending "add some examples to (or delete) #{__FILE__}"
 end
+=end

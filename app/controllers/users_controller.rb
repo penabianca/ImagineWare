@@ -49,6 +49,7 @@ class UsersController < ApplicationController
       if @user.save
         UserMailer.verify_instructor(@user).deliver
         flash.now[:success]= "Your request was sent to the administrator"
+        redirect_to user_path(@user)
       else
         flash.now[:error] = "You did not enter all the fields correctly"
         #redirect_to signup_instructor_path

@@ -39,7 +39,7 @@ class SubmissionsController < ApplicationController
     @submission.user_id = session[:current_user]
     @submission.course_id = session[:course]
     if @submission.save
-      flash.now[:success] = "Your submission for #{Course.find(@submission.course_id).title} was successful"
+      flash.now[:success] = "Your submission was successful"
       flash.keep
     end
     redirect_to student_submissions_path(session[:current_user])
