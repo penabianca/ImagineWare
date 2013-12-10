@@ -70,6 +70,7 @@ class UsersController < ApplicationController
       @user.instruc = false
       @user.status = "approved"
       if @user.save
+        Credit.create!(:user_id => @user.id,:credit =>0)
         sign_in @user
         flash[:success] = "Welcome to ImagineWare Online Course Platform."
         redirect_to user_path(@user)
