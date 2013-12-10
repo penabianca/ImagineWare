@@ -1,8 +1,8 @@
 class AttachmentsController < ApplicationController
-  def show
-    @attachment = Attachment.find(params[:id])
-    send_data @attachment.data, :filename => @attachment.filename, :type => @attachment.content_type 
-  end
+  #def show
+   # @attachment = Attachment.find(params[:id])
+   # send_data @attachment.data, :filename => @attachment.filename, :type => @attachment.content_type 
+  #end
 
   def create
     return if params[:attachment].blank?
