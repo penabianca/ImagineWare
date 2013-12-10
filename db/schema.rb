@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131208061330) do
+ActiveRecord::Schema.define(:version => 20131210140649) do
 
   create_table "attachments", :force => true do |t|
     t.string   "filename"
@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(:version => 20131208061330) do
 
   create_table "courses", :force => true do |t|
     t.string   "title"
-    t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.text     "content",    :limit => 255
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.integer  "points"
   end
 
