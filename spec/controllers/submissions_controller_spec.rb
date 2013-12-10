@@ -5,6 +5,7 @@ describe SubmissionsController do
     @course = FactoryGirl.create(:course)
     @submission = FactoryGirl.create(:submission)
   end
+=begin
   begin describe "POST #upload" do   
     it 'uploads a new attachment' do
       expect{
@@ -19,6 +20,7 @@ describe SubmissionsController do
       }.to change(Submission,:count).by(1)
     end
   end
+=end
   describe "GET #index" do
     it 'gets submissions' do
       get :index
@@ -42,5 +44,4 @@ describe SubmissionsController do
     end
   end
 =end
-end
 end

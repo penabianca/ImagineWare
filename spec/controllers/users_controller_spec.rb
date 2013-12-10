@@ -5,6 +5,7 @@ describe UsersController do
   before(:each) do
     @user = FactoryGirl.create(:instructor)
   end
+=begin
   begin describe "POST #create_instructors" do
     it 'creates a new instructor user' do
       expect{
@@ -17,6 +18,7 @@ describe UsersController do
       response.should render_template :show
     end
   end
+=end
 =begin
   describe "GET #index" do
     it 'gets users' do
@@ -39,6 +41,7 @@ describe UsersController do
       response.should render_template :show
     end
   end
+=begin
   describe "PUT #update" do
     it 'updates the @user' do
       put :update, id: @user
@@ -53,5 +56,6 @@ describe UsersController do
   #  end
   #end
 end
+=end
 end
 
