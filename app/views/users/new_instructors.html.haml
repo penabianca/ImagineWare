@@ -1,16 +1,17 @@
 - provide(:title, 'Sign up')
 %h1  Sign up
-.row
-  .span6.offset3
-    = simple_form_for :user , :url => {:action => :create_instructors } do |f|
-      %p= f.label :First_Name
-      %p= f.text_field :first_name
-      %p= f.label :Last_Name
-      %p= f.text_field :last_name
-      %p= f.label :email
-      %p= f.text_field :email
-      %p= f.label :password
-      %p= f.password_field :password
-      %p= f.label :password_confirmation, "Confirmation"
-      %p= f.password_field :password_confirmation
-      %p= f.submit "Create my account", class: "btn btn-large btn-primary"
+%center
+  .row
+    .span6.offset3
+      = simple_form_for :user , :url => {:action => :create_instructors } do |f|
+        %p= f.label :First_Name
+        %p= f.text_field :first_name
+        %p= f.label :Last_Name
+        %p= f.text_field :last_name
+        %p= f.label :email
+        %p= f.text_field :email
+        %p= f.label :password
+        %p= f.password_field :password
+        %p= f.label :password_confirmation, "Confirmation"
+        %p= f.password_field :password_confirmation
+        %p= f.submit "Create my account", class: "btn btn-large btn-primary"
