@@ -1,11 +1,12 @@
 -#  This file is app/views/courses/index.html.haml
 %h2 All Courses
 
-%div#tag_cloud
-  - tag_cloud Course.tag_counts, %{s m l} do |tag, css_class|
-    = link_to tag.name, tag_path(tag.name), class: css_class
-= @pasta
+
 %center
+  %div#tag_cloud
+    - tag_cloud Course.tag_counts, %{s m l} do |tag, css_class|
+      = link_to tag.name, tag_path(tag.name), class: css_class
+  = @pasta
   %table{:class =>"table table-striped table-bordered table-condensed" }
 
     %thead
