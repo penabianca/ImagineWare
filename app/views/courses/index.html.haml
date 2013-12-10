@@ -10,13 +10,38 @@
 
     %thead
       %tr
+        %th Logo
         %th Course Title
         -#%th content
+        
     %tbody
       - @courses.each do |course|
-        %tr
-          %td= link_to "#{course.title}", course_path(course)
+        -if course.title.downcase.include? "python"
+          %tr
+            %td= link_to image_tag("python.gif"), "#"
+            %td= link_to "#{course.title}", course_path(course)
+        -elsif course.title.downcase.include? "android"
+          %tr
+            %td= link_to image_tag("android.png"), "#"
+            %td= link_to "#{course.title}", course_path(course)
+        -elsif course.title.downcase.include? "html5"
+          %tr
+            %td= link_to image_tag("html5.jpg"), "#"
+            %td= link_to "#{course.title}", course_path(course)
+        -elsif  course.title.downcase.include? "rails"
+          %tr
+            %td= link_to image_tag("rails.png"), "#"
+            %td= link_to "#{course.title}", course_path(course)
+        -elsif  course.title.downcase.include? "java"
+          %tr
+            %td= link_to image_tag("java1.png"), "#"
+            %td= link_to "#{course.title}", course_path(course)
+        -else 
+          %tr
+            %td= link_to image_tag("rails.png"), "#"
+            %td= link_to "#{course.title}", course_path(course)
           -#%td= "#{course.content}"
+          
 -# add to end of index.html.haml
 -if not current_user.nil? and current_user.instruc
   = link_to 'Add new Course', new_course_path

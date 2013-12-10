@@ -12,7 +12,6 @@ class UsersController < ApplicationController
   def students
     @students = User.students.paginate(:page => params[:page],per_page: 5)
   end
-
   def instructors
     @instructors = User.instructors.paginate(:page => params[:page],per_page: 5)
   end

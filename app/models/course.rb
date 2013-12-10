@@ -1,5 +1,5 @@
 class Course < ActiveRecord::Base
-  attr_accessible :title, :content, :tag_list
+  attr_accessible :title,:points, :content, :tag_list
   acts_as_taggable_on :tags
   has_many :submissions, inverse_of: :course
   def self.all_grades

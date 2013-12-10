@@ -1,8 +1,12 @@
 class SubmissionsController < ApplicationController
-
   def my_grades
-    @my_sub = Submission.where('user_id' => session[:current_user])
+    @my_sub = Submission.my_grades(session[:current_user])
   end
+  def tutorials_completed
+    @completed = Submission.tutorials_completed(session[:current_user],Course.all_grades)
+  end
+
+
   def assignments_to_grade
     @to_grade = Submission.non_graded_assignments
   end
@@ -11,6 +15,13 @@ class SubmissionsController < ApplicationController
   end
   def student
     @student_submissions = Submission.student_submissions(params[:id])
+    @id = params[:id]
+    session[:stu] = @id
+  end
+  def student_rewards
+    @stud_rewa = Submission.tutorials_completed(params[:id],Course.all_grades)
+
+    @student_reward = Submission.where(:user_id => params[:id]).sum(:points)
   end
   def index
     @submissions = Submission.all
@@ -50,21 +61,22 @@ class SubmissionsController < ApplicationController
     session[:file_id] = @submission.attachment_id
   end
   def download
-    
     @attachment = Attachment.find(session[:file_id])
     send_data @attachment.data, :filename => @attachment.filename, :type => @attachment.content_type 
   end
+
   def update
     @submission = Submission.find params[:id]
     @submission.grader_id = session[:current_user].to_i
-    @submission.update_attributes!(params[:submission])
-    begin
-      UserMailer.assignment_graded(@submission).deliver
-      flash[:success] = "#{User.find(@submission.user_id).first_name}'s submission for #{Course.find(@submission.course_id).title} has been graded"
-    rescue
-      flash[:error] = "#{User.find(@submission.user_id).first_name}'s submission for #{Course.find(@submission.course_id).title} has been graded but he/she does not have a valid email"
+    if params[:submission][:grade] != "F"
+      @submission.points = Course.find(@submission.course_id).points
+    else
+      @submission.points = 0
     end
-    redirect_to students_path
+    @submission.update_attributes!(params[:submission])
+    UserMailer.assignment_graded(@submission).deliver
+    flash[:success] = "#{User.find(@submission.user_id).first_name}'s submission for #{Course.find(@submission.course_id).title} has been graded"
+    redirect_to root_path
   end
 
 end

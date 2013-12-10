@@ -6,7 +6,6 @@ class CoursesController < ApplicationController
     else
       @courses = Course.all
     end
-    #render :file => 'app\views\courses\show.html.haml'
   end
 
   def show
@@ -42,18 +41,18 @@ class CoursesController < ApplicationController
   #    @courses.concat(Course.find_all_by_tags(tag))
   #  end 
   #end
-=begin
+
   def edit
     @course = Course.find params[:id]
   end
 
   def update
     @course = Course.find params[:id]
-    @course.update_attributes!(params[:Course])
+    @course.update_attributes!(params[:course])
     flash[:notice] = "#{@course.title} was successfully updated."
     redirect_to course_path(@course)
   end
-
+=begin
   def destroy
     @course = Course.find(params[:id])
     @course.destroy

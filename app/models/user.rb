@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
 
   has_many :submissions,inverse_of: :user, :dependent => :destroy
-
+  has_one  :credit
   ActiveModel::ForbiddenAttributesProtection
   before_create :create_remember_token
   before_save { self.email = email.downcase }
-  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_token, :instruc
+  attr_accessible :email,:credit, :first_name, :last_name, :password, :password_confirmation, :remember_token, :instruc
 
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, presence: true, length: {maximum: 50}

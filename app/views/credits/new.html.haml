@@ -1,0 +1,7 @@
+%h2 Credit student's account
+.row
+  .span6.offset3
+    = simple_form_for :credit_form, :url => {:action => :create } do |f|
+      %p= f.label :credit
+      %p= f.text_field :credit
+      %p= f.submit "Add credit", class: "btn btn-large btn-primary"

@@ -1,13 +1,11 @@
--# edit.html.haml using partial
-
-%h1 Edit Existing Course
-
-= form_tag course_path(@course), :method => :put do
-
-  = label :course, :title, 'Title'
-  = text_field :movie, 'title'
-
-  = label :course, :content, 'Content'
-  = text_field :course, 'content'
-
-  = submit_tag 'Update Course Info'
+%h1 Edit course
+.row
+  .span6.offset3
+    = form_tag course_path(@course), :method => :put do
+      %p= label :course,:Course_Title
+      %p= text_field :course,:title
+      %p= label :course,:Points
+      %p= text_field :course,:points
+      %p= label :course,:Description
+      %p= text_area :course,:content, :rows => 5, :class => "span3", :placeholder => "Enter text"
+      %p= submit_tag "Create course", class: "btn btn-large btn-primary"
