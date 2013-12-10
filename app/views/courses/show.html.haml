@@ -11,4 +11,5 @@
  
 -if current_user and current_user.instruc
   %p= link_to "Edit #{@course.title}", edit_course_path(@course)
-  %p= link_to 'Back to course list',courses_path   
+  %p= link_to 'Back to course list',courses_path  
+  %p= link_to 'Delete',course_path(@course), :method => :delete, data: {confirm: "Are You Sure? "}

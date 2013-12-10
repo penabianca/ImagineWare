@@ -57,12 +57,10 @@ class CoursesController < ApplicationController
     flash[:notice] = "#{@course.title} was successfully updated."
     redirect_to course_path(@course)
   end
-=begin
   def destroy
     @course = Course.find(params[:id])
     @course.destroy
     flash[:notice] = "Course '#{@course.title}' deleted."
     redirect_to courses_path
   end
-=end
 end
