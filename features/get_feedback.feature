@@ -44,7 +44,7 @@ Scenario: make a submission and get feedback
 	When I select "B" from "Grade"
 	When I fill "Feedback" with "Awesome stuff!"
 	Then I press "Submit grade"
-	Then I should see "Sebastian's submission for Introduction to HTML5 has been graded but he/she does not have a valid email"
+	Then I should see "Sebastian's submission for Introduction to HTML5 has been graded"
 	
 	When I follow "Sign out"
 	Given that sd@gmail.com is logged in with password cs169rocks
