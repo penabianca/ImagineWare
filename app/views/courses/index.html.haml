@@ -5,6 +5,8 @@
   - tag_cloud Course.tag_counts, %{s m l} do |tag, css_class|
     = link_to tag.name, tag_path(tag.name), class: css_class
 = @pasta
+= form_tag do
+  = autocomplete_field_tag 'title', '', courses_autocomplete_course_path
 %center
   %table{:class =>"table table-striped table-bordered table-condensed" }
 

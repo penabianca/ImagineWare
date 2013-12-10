@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  autocomplete :courses, :title
   def index
     @pasta = params[:tag]
     if params[:tag]

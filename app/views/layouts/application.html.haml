@@ -3,9 +3,13 @@
   %head
     %title= full_title(yield(:title))
     = stylesheet_link_tag "application", media: "all", |
-      "data-turbolinks-track" => true                  |
+      "data-turbolinks-track" => true              |
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
+    = yield(:head)
+    = javascript_include_tag 'jquery-1.9.1.js', 'jquery-ui-1.10.3.custom.min.js', 'autocomplete-rails.js',  'rails.js'
+    = stylesheet_link_tag 'jquery-ui-1.10.3.custom.css'
+
     = render 'layouts/shim'
   %body
     = render 'layouts/header'
