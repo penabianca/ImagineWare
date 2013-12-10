@@ -7,4 +7,5 @@ ActionMailer::Base.smtp_settings = {
   :authentication => "plain",
   :user_name => "imaginewarecs169group19@gmail.com",
   :password => "imaginewaregroup19",
+  :enable_starttls_auto => true
 }
