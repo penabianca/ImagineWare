@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  has_merit
   has_many :submissions, inverse_of: :user
 
   ActiveModel::ForbiddenAttributesProtection
