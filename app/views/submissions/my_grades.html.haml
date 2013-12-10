@@ -7,6 +7,7 @@
    %th Grade
    %th Date Submitted
    %th Feedback
+   %th File Uploaded
   %tbody
    - @my_sub.each do |submission|
     %tr
@@ -14,3 +15,4 @@
      %td= submission.grade
      %td= submission.created_at
      %td= link_to "See your feedback for #{Course.find(submission.course_id).title}", submission_path(submission.id)
+     %td= link_to 'Download Assignment' ,download_path

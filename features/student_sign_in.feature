@@ -31,6 +31,25 @@ Feature: Student account in the ImagineWare course platform
     When I press "Create my account"
     Then I should see "You did not enter all the fields correctly"
 
+  Scenario: Create an account with a password that is too short
+    When I follow "Students"
+    When I fill in "user_first_name" with "Sebastian"
+    When I fill in "user_last_name" with "Delgado"
+    When I fill in "user_email" with "sd@gmail.com"
+    When I fill in "user_password" with "good"
+    When I fill in "user_password_confirmation" with "good"
+    When I press "Create my account"
+    Then I should see "Password should be at least six characters long"
+
+  Scenario: Create an acount with not password confirmation
+    When I follow "Students"
+    When I fill in "user_first_name" with "Sebastian"
+    When I fill in "user_last_name" with "Delgado"
+    When I fill in "user_email" with "sd@gmail.com"
+    When I fill in "user_password" with "good"
+    When I press "Create my account"
+    Then I should see "Please enter the password confirmation"
+
   Scenario: Sign into account and see grades
     Then I should see "Sign in"
     When I follow "Sign in"

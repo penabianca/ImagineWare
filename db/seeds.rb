@@ -39,3 +39,5 @@ end
 @c.tag_list.add('beginner')
 @c.tag_list.add('ruby')
 @c.save
+
+
