@@ -17,9 +17,14 @@ class CoursesController < ApplicationController
   end
 
   def create
-    @course = Course.create!(params[:course])
-    flash[:success] = "#{@course.title} was successfully created."
-    redirect_to courses_path
+    @course = Course.new(params[:course])
+    if @course.save
+      flash[:success] = "#{@course.title} was successfully created."
+      redirect_to courses_path
+    else
+      flash[:error] = "Your course was not properly created"
+    end
+
   end
   
   
